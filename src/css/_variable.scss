@@ -1,0 +1,28 @@
+$box-shadow--default: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24), 0 0 3px rgba(0,0,0,0.12);
+$box-shadow--hover: 0 6px 6px rgba(0,0,0,0.08), 0 6px 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.08);
+$color--black: #222222;
+$color--darkgray: #333333;
+$color--lightgray: #cccccc;
+$color--gray: #777777;
+$color--white--transparent: rgba(255,255,255,0.95);
+$color--white: #FFFFFF;
+$color--main: #00A5D5;
+$color--sub: #EED786;
+$color--accent: #EE86A8;
+$font--body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font--header: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font--p: 1.6rem;                     // BODY TEXT
+$font--h1: calc(#{$font--p} * 4.48);  // PAGE BANNER
+$font--h2: calc(#{$font--p} * 3.32);  // PAGE MAIN HEADER
+$font--h3: calc(#{$font--p} * 2.46);  // PAGE SUB HEADER
+$font--h4: calc(#{$font--p} * 1.83);  // ARTICLE MAIN HEADER
+$font--h5: calc(#{$font--p} * 1.35);  // ARTICLE SUB HEADER
+$space__mobile--s: 30px;
+$space__mobile--m: 60px;
+$space__mobile--l: 90px;
+$space__desktop--s: 20px;
+$space__desktop--m: 40px;
+$space__desktop--l: 60px;
+$transition--s: 0.3s;
+$transition--m: 0.6s;
+$transition--l: 1s;

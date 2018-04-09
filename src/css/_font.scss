@@ -1,0 +1,37 @@
+h1, h2, h3, h4, h5, h6, p, a {
+  color: $color--black;
+  line-height: 125%;
+  text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font--header;
+}
+p,a {
+  font-family: $font--body;
+}
+h1 {
+  font-size: $font--h1;
+}
+h2 {
+  font-size: $font--h2;
+}
+h3 {
+  font-size: $font--h3;
+}
+h4 {
+  font-size: $font--h4;
+}
+h5, h6 {
+  font-size: $font--h5;
+}
+p {
+  font-size: $font--p;
+}
+a {
+  font-size: $font--p;
+  &:visited, &:focus, &:active {
+    color: $color--black;
+    outline: none;
+    text-decoration: none;
+  }
+}

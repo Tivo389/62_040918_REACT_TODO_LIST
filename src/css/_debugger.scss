@@ -1,0 +1,137 @@
+.debug {
+  border: 1px dashed #FF0000 !important;
+  &--reset {
+    all: unset;
+    border: 1px dashed #00C8FF !important;
+  }
+}
+.display {
+  &--block {
+    display: block;
+  }
+  &--inline {
+    display: inline;
+  }
+  &--inline-block {
+    display: inline-block;
+  }
+  &--none {
+    display: none;
+  }
+}
+.dummy--height {
+  height: 500vh;
+}
+.fill {
+  &--c {
+    background-color: #BCE2EE;
+  }
+  &--m {
+    background-color: #F3C7D4;
+  }
+  &--y {
+    background-color: #FFFCC8;
+  }
+  &--k {
+    background-color: #C0C1BF;
+  }
+}
+.flex {
+  &--center--center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  &--direction--column {
+    flex-direction: column;
+  }
+}
+.height {
+  &--100 {
+    height: 100%;
+  }
+  &--90 {
+    height: 90%;
+  }
+  &--80 {
+    height: 80%;
+  }
+  &--70 {
+    height: 70%;
+  }
+  &--60 {
+    height: 60%;
+  }
+  &--50 {
+    height: 50%;
+  }
+  &--40 {
+    height: 40%;
+  }
+  &--30 {
+    height: 30%;
+  }
+  &--20 {
+    height: 20%;
+  }
+  &--10 {
+    height: 10%;
+  }
+}
+.margin--none {
+  margin: 0px;
+}
+.padding--none {
+  padding: 0px;
+}
+.section--full-view {
+  min-height: 100vh;
+  padding: 0 0 5vh 0;
+  width: 100vw;
+  .row {
+    width: 100%;
+  }
+}
+.version {
+  color: $color--black;
+  font-size: 8px;
+  font-weight: 500;
+  left: 5px;
+  letter-spacing: 0px;
+  position: fixed;
+  text-align: left;
+  top: 5px;
+  z-index: 1000;
+}
+.width {
+  &--100 {
+    width: 100%;
+  }
+  &--90 {
+    width: 90%;
+  }
+  &--80 {
+    width: 80%;
+  }
+  &--70 {
+    width: 70%;
+  }
+  &--60 {
+    width: 60%;
+  }
+  &--50 {
+    width: 50%;
+  }
+  &--40 {
+    width: 40%;
+  }
+  &--30 {
+    width: 30%;
+  }
+  &--20 {
+    width: 20%;
+  }
+  &--10 {
+    width: 10%;
+  }
+}
