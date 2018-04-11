@@ -1,13 +1,14 @@
-h1, h2, h3, h4, h5, h6, p, a {
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,700');
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Roboto Slab', serif;
+
+h1, h2, h3, h4, h5, h6, p, a, li {
   color: $color--black;
   line-height: 125%;
   text-align: left;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $font--header;
-}
-p,a {
-  font-family: $font--body;
 }
 h1 {
   font-size: $font--h1;
@@ -21,14 +22,17 @@ h3 {
 h4 {
   font-size: $font--h4;
 }
-h5, h6 {
+h5 {
   font-size: $font--h5;
 }
-p {
+h6 {
+  font-size: $font--h6;
+}
+p,a,li {
   font-size: $font--p;
+  font-family: $font--body;
 }
 a {
-  font-size: $font--p;
   &:visited, &:focus, &:active {
     color: $color--black;
     outline: none;
