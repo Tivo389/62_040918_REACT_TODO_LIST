@@ -206,32 +206,53 @@ a:visited, a:focus, a:active {
 .width--10 {
   width: 10%; }
 
+header {
+  flex: 1 100%;
+  padding: 0 2rem;
+  margin-bottom: 6rem; }
+
+h1 {
+  text-align: center; }
+
 .app {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  padding-bottom: 5vh; }
+  padding: 5vw;
+  min-height: 100vh; }
+
+.btn {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  background-color: #00A5D5;
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 10rem; }
+  .btn:hover {
+    background-color: #0091bc; }
 
 .cardWrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+
+.cardContainer {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.24), 0 0 3px rgba(0, 0, 0, 0.12);
   background-color: #FFFFFF;
   padding: 1.25rem calc(1.25rem * 1.25);
   border-radius: 0.25rem;
-  min-width: 200px;
-  width: 65vw; }
-  .cardWrapper h6 {
+  min-width: 240px;
+  width: 30%;
+  max-width: 35vw; }
+  .cardContainer h6 {
     font-family: 'Roboto Condensed',arial,sans-serif;
     text-transform: uppercase;
     margin-bottom: calc(1.25rem / 2);
     letter-spacing: 0.05rem; }
-    .cardWrapper h6:focus {
+    .cardContainer h6:focus {
       outline: unset; }
-  .cardWrapper li {
+  .cardContainer li {
     font-family: 'Roboto Slab', serif;
     margin-bottom: 0.5rem; }
-    .cardWrapper li:last-child {
+    .cardContainer li:last-child {
       margin-bottom: unset; }
 
 .cardToolBox {
@@ -246,6 +267,11 @@ a:visited, a:focus, a:active {
       color: #777777; }
     .cardToolBox svg:last-child {
       margin-right: unset; }
+
+.sampleBtnWrapper {
+  width: 100%;
+  margin: 12rem 0 0 0;
+  text-align: center; }
 
 /* BOOTSTRAP NOTES & RESOLUTION REFERENCE */
 /* Extra small devices (phones, less than 768px) */

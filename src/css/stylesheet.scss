@@ -4,22 +4,50 @@
 @import '_font';
 @import '_debugger';
 
-.app {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  padding-bottom: 5vh;
-}
 $cardSpacer: 1.25rem;
+
+header {
+  flex: 1 100%;
+  padding: 0 2rem;
+  margin-bottom: 6rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.app {
+  padding: 5vw;
+  min-height: 100vh;
+}
+
+.btn {
+  font-size: 1.4rem;
+  color: $color--white;
+  background-color: $color--main;
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 10rem;
+  &:hover {
+    background-color: darken($color--main, 5%);
+  }
+}
+
 .cardWrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cardContainer {
   box-shadow: $box-shadow--default;
   background-color: $color--white;
   padding: $cardSpacer calc(#{$cardSpacer} * 1.25);
   border-radius: 0.25rem;
-  min-width: 200px;
-  width: 65vw;
+  min-width: 240px;
+  width: 30%;
+  max-width: 35vw;
   h6 {
     font-family: 'Roboto Condensed',arial,sans-serif;
     text-transform: uppercase;
@@ -53,6 +81,12 @@ $cardSpacer: 1.25rem;
       margin-right: unset;
     }
   }
+}
+
+.sampleBtnWrapper {
+  width: 100%;
+  margin: 12rem 0 0 0;
+  text-align: center;
 }
 
 /* BOOTSTRAP NOTES & RESOLUTION REFERENCE */

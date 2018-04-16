@@ -2,9 +2,10 @@ import React from 'react';
 import CardTitle from './CardTitle';
 
 class TodoList extends React.Component {
+
   render() {
     return(
-      <div className="cardWrapper">
+      <div className="cardContainer">
         <CardTitle />
         <ul>
           <li>Item 1</li>
