@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,700");
 html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
   margin: 0;
@@ -45,7 +46,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-h1, h2, h3, h4, h5, h6, p, a {
+h1, h2, h3, h4, h5, h6, p, a, li {
   color: #222222;
   line-height: 125%;
   text-align: left; }
@@ -53,33 +54,32 @@ h1, h2, h3, h4, h5, h6, p, a {
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
-p, a {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
 h1 {
-  font-size: calc(1.6rem * 4.48); }
+  font-size: calc(1.4rem * 4.48); }
 
 h2 {
-  font-size: calc(1.6rem * 3.32); }
+  font-size: calc(1.4rem * 3.32); }
 
 h3 {
-  font-size: calc(1.6rem * 2.46); }
+  font-size: calc(1.4rem * 2.46); }
 
 h4 {
-  font-size: calc(1.6rem * 1.83); }
+  font-size: calc(1.4rem * 1.83); }
 
-h5, h6 {
-  font-size: calc(1.6rem * 1.35); }
+h5 {
+  font-size: calc(1.4rem * 1.35); }
 
-p {
-  font-size: 1.6rem; }
+h6 {
+  font-size: calc(1.4rem * 1.10); }
 
-a {
-  font-size: 1.6rem; }
-  a:visited, a:focus, a:active {
-    color: #222222;
-    outline: none;
-    text-decoration: none; }
+p, a, li {
+  font-size: 1.4rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+a:visited, a:focus, a:active {
+  color: #222222;
+  outline: none;
+  text-decoration: none; }
 
 .debug {
   border: 1px dashed #FF0000 !important; }
@@ -206,8 +206,72 @@ a {
 .width--10 {
   width: 10%; }
 
-.App {
-  border: 1px dashed red; }
+header {
+  flex: 1 100%;
+  padding: 0 2rem;
+  margin-bottom: 6rem; }
+
+h1 {
+  text-align: center; }
+
+.app {
+  padding: 5vw;
+  min-height: 100vh; }
+
+.btn {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  background-color: #00A5D5;
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 10rem; }
+  .btn:hover {
+    background-color: #0091bc; }
+
+.cardWrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+
+.cardContainer {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.24), 0 0 3px rgba(0, 0, 0, 0.12);
+  background-color: #FFFFFF;
+  padding: 1.25rem calc(1.25rem * 1.25);
+  border-radius: 0.25rem;
+  min-width: 240px;
+  width: 30%;
+  max-width: 35vw; }
+  .cardContainer h6 {
+    font-family: 'Roboto Condensed',arial,sans-serif;
+    text-transform: uppercase;
+    margin-bottom: calc(1.25rem / 2);
+    letter-spacing: 0.05rem; }
+    .cardContainer h6:focus {
+      outline: unset; }
+  .cardContainer li {
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 0.5rem; }
+    .cardContainer li:last-child {
+      margin-bottom: unset; }
+
+.cardToolBox {
+  border-top: 1px solid #cccccc;
+  color: #cccccc;
+  font-size: 1.4rem;
+  padding-top: 1.25rem;
+  margin-top: 1.25rem; }
+  .cardToolBox svg {
+    margin-right: 0.75rem; }
+    .cardToolBox svg:hover {
+      color: #777777; }
+    .cardToolBox svg:last-child {
+      margin-right: unset; }
+
+.sampleBtnWrapper {
+  width: 100%;
+  margin: 12rem 0 0 0;
+  text-align: center; }
 
 /* BOOTSTRAP NOTES & RESOLUTION REFERENCE */
 /* Extra small devices (phones, less than 768px) */

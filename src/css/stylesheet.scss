@@ -4,8 +4,89 @@
 @import '_font';
 @import '_debugger';
 
-.App {
-  border: 1px dashed red;
+$cardSpacer: 1.25rem;
+
+header {
+  flex: 1 100%;
+  padding: 0 2rem;
+  margin-bottom: 6rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.app {
+  padding: 5vw;
+  min-height: 100vh;
+}
+
+.btn {
+  font-size: 1.4rem;
+  color: $color--white;
+  background-color: $color--main;
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border-radius: 10rem;
+  &:hover {
+    background-color: darken($color--main, 5%);
+  }
+}
+
+.cardWrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cardContainer {
+  box-shadow: $box-shadow--default;
+  background-color: $color--white;
+  padding: $cardSpacer calc(#{$cardSpacer} * 1.25);
+  border-radius: 0.25rem;
+  min-width: 240px;
+  width: 30%;
+  max-width: 35vw;
+  h6 {
+    font-family: 'Roboto Condensed',arial,sans-serif;
+    text-transform: uppercase;
+    margin-bottom: calc(#{$cardSpacer} / 2);
+    letter-spacing: 0.05rem;
+    &:focus {
+      outline: unset;
+    }
+  }
+  li {
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 0.5rem;
+    &:last-child {
+      margin-bottom: unset;
+    }
+  }
+}
+
+.cardToolBox {
+  border-top: 1px solid $color--lightgray;
+  color: $color--lightgray;
+  font-size: $font--p;
+  padding-top: $cardSpacer;
+  margin-top: $cardSpacer;
+  svg {
+    margin-right: 0.75rem;
+    &:hover {
+      color: $color--gray;
+    }
+    &:last-child {
+      margin-right: unset;
+    }
+  }
+}
+
+.sampleBtnWrapper {
+  width: 100%;
+  margin: 12rem 0 0 0;
+  text-align: center;
 }
 
 /* BOOTSTRAP NOTES & RESOLUTION REFERENCE */
