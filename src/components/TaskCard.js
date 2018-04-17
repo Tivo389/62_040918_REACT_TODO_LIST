@@ -1,17 +1,19 @@
 import React from 'react';
-import CardTitle from './CardTitle';
+import Task from './Task';
 
-class TodoList extends React.Component {
+class TaskCard extends React.Component {
 
   render() {
+    const {name,color,tasks} = this.props.details;
+    const divStyle = { backgroundColor: color };
+
     return(
-      <div className="cardContainer">
-        <CardTitle />
+      <div className="cardContainer" style={divStyle}>
+        <h6>{name}</h6>
         <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
+          {Object.keys(tasks).map(key => (
+            <Task key={key} taskDetail={tasks[key]} />
+          ))}
         </ul>
         <div className="cardToolBox">
           <i className="fas fa-paint-brush"></i>
@@ -20,6 +22,7 @@ class TodoList extends React.Component {
       </div>
     );
   }
+
 }
 
-export default TodoList;
+export default TaskCard;

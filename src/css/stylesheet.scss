@@ -41,28 +41,39 @@ h1 {
 }
 
 .cardContainer {
-  box-shadow: $box-shadow--default;
   background-color: $color--white;
-  padding: $cardSpacer calc(#{$cardSpacer} * 1.25);
   border-radius: 0.25rem;
+  box-shadow: $box-shadow--default;
+  flex: 1;
+  margin: $cardSpacer;
+  max-width: 45%;
   min-width: 240px;
-  width: 30%;
-  max-width: 35vw;
+  padding: $cardSpacer calc(#{$cardSpacer} * 1.25);
   h6 {
     font-family: 'Roboto Condensed',arial,sans-serif;
     text-transform: uppercase;
-    margin-bottom: calc(#{$cardSpacer} / 2);
+    margin-bottom: $cardSpacer;
     letter-spacing: 0.05rem;
     &:focus {
       outline: unset;
     }
   }
   li {
+    align-items: center;
+    display: flex;
     font-family: 'Roboto Slab', serif;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     &:last-child {
       margin-bottom: unset;
     }
+  }
+  div[role="checkbox"] {
+    display: inline-block;
+    flex: 0 0 1.8rem;
+    height: 1.8rem;
+    border: 2px solid $color--lightgray;
+    border-radius: 0.1rem;
+    margin-right: 0.75rem;
   }
 }
 
@@ -70,8 +81,8 @@ h1 {
   border-top: 1px solid $color--lightgray;
   color: $color--lightgray;
   font-size: $font--p;
-  padding-top: $cardSpacer;
-  margin-top: $cardSpacer;
+  padding-top: calc(#{$cardSpacer} * 1.25);
+  margin-top: calc(#{$cardSpacer} * 1.25);
   svg {
     margin-right: 0.75rem;
     &:hover {

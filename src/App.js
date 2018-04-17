@@ -1,7 +1,7 @@
 import React from 'react';
 import sampleCards from './sampleCards';
 import TaskCard from './components/TaskCard';
-import Header from './components/Header';
+import AppHeader from './components/AppHeader';
 
 class App extends React.Component {
 
@@ -18,12 +18,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header text="React Todo List"/>
+        <AppHeader text="React Todo List"/>
         <div className="cardWrapper">
 
           {Object.keys(this.state.taskCards).map(key => (
-            // CONTINUE HERE PASS THE PROPS
-            <TaskCard />
+            <TaskCard key={key} details={this.state.taskCards[key]}/>
           ))}
 
           <div className="sampleBtnWrapper">
