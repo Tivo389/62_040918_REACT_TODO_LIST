@@ -66,14 +66,35 @@ h1 {
     &:last-child {
       margin-bottom: unset;
     }
+    &.checked span {
+      text-decoration: line-through;
+    }
   }
-  div[role="checkbox"] {
+}
+
+div[role="checkbox"] {
+  align-items: center;
+  border-radius: 0.35rem;
+  border: 1px solid $color--gray;
+  display: inline-flex;
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  justify-content: center;
+  margin-right: 0.75rem;
+  &:hover {
+    border: 1px solid $color--darkgray;
+  }
+}
+
+div[role="checkbox"].checked {
+  border: 1px solid $color--darkgray;
+  background-color: $color--darkgray;
+  &:after {
+    color: $color--white;
+    content: "\f00c";
     display: inline-block;
-    flex: 0 0 1.8rem;
-    height: 1.8rem;
-    border: 2px solid $color--lightgray;
-    border-radius: 0.1rem;
-    margin-right: 0.75rem;
+    font-family: FontAwesome;
+    line-height: 1;
   }
 }
 

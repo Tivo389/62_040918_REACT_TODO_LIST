@@ -257,13 +257,30 @@ h1 {
     margin-bottom: 1rem; }
     .cardContainer li:last-child {
       margin-bottom: unset; }
-  .cardContainer div[role="checkbox"] {
+    .cardContainer li.checked span {
+      text-decoration: line-through; }
+
+div[role="checkbox"] {
+  align-items: center;
+  border-radius: 0.35rem;
+  border: 1px solid #777777;
+  display: inline-flex;
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  justify-content: center;
+  margin-right: 0.75rem; }
+  div[role="checkbox"]:hover {
+    border: 1px solid #333333; }
+
+div[role="checkbox"].checked {
+  border: 1px solid #333333;
+  background-color: #333333; }
+  div[role="checkbox"].checked:after {
+    color: #FFFFFF;
+    content: "\f00c";
     display: inline-block;
-    flex: 0 0 1.8rem;
-    height: 1.8rem;
-    border: 2px solid #cccccc;
-    border-radius: 0.1rem;
-    margin-right: 0.75rem; }
+    font-family: FontAwesome;
+    line-height: 1; }
 
 .cardToolBox {
   border-top: 1px solid #cccccc;
