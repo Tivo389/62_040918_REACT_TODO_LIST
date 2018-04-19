@@ -257,8 +257,6 @@ h1 {
     margin-bottom: 1rem; }
     .cardContainer li:last-child {
       margin-bottom: unset; }
-    .cardContainer li.checked span {
-      text-decoration: line-through; }
 
 div[role="checkbox"] {
   align-items: center;
@@ -281,6 +279,8 @@ div[role="checkbox"].checked {
     display: inline-block;
     font-family: FontAwesome;
     line-height: 1; }
+  div[role="checkbox"].checked + span {
+    text-decoration: line-through; }
 
 .cardToolBox {
   border-top: 1px solid #cccccc;

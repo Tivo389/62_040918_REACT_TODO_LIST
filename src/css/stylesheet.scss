@@ -66,9 +66,6 @@ h1 {
     &:last-child {
       margin-bottom: unset;
     }
-    &.checked span {
-      text-decoration: line-through;
-    }
   }
 }
 
@@ -95,6 +92,9 @@ div[role="checkbox"].checked {
     display: inline-block;
     font-family: FontAwesome;
     line-height: 1;
+  }
+  + span {
+    text-decoration: line-through;
   }
 }
 
