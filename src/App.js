@@ -15,13 +15,12 @@ class App extends React.Component {
     });
   }
 
-  updateTask = (cardIndex, taskIndex, updatedTask) => {
+  updateCard = (cardIndex, taskIndex, updatedElement) => {
     const taskCards = {...this.state.taskCards};
-    taskCards[cardIndex].tasks[taskIndex] = updatedTask;
+    taskCards[cardIndex].cardTasks[taskIndex] = updatedElement;
     this.setState({
       taskCards: taskCards
     });
-    console.log(taskCards);
   };
 
   render() {
@@ -31,7 +30,7 @@ class App extends React.Component {
         <div className="cardWrapper">
 
           {Object.keys(this.state.taskCards).map(key => (
-            <TaskCard key={key} cardIndex={key} details={this.state.taskCards[key]} updateTask={this.updateTask} />
+            <TaskCard key={key} cardIndex={key} details={this.state.taskCards[key]} updateCard={this.updateCard} />
           ))}
 
           <div className="sampleBtnWrapper">

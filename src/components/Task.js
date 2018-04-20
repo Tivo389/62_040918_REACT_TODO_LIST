@@ -3,34 +3,35 @@ import React from 'react';
 class Task extends React.Component {
 
   handleCheckbox = (e) => {
-    let isChecked = e.target.attributes['aria-checked'].value === 'true';
+    const {classList, attributes} = e.currentTarget;
+    const {taskDetail, updateCard, cardIndex, taskIndex} = this.props;
+    const isChecked = attributes['aria-checked'].value === 'true';
     if(isChecked) {
-      e.target.classList.remove('checked');
-      e.target.attributes['aria-checked'].value = 'false';
+      classList.remove('checked');
+      attributes['aria-checked'].value = 'false';
     } else {
-      e.target.classList.add('checked');
-      e.target.attributes['aria-checked'].value = 'true';
+      classList.add('checked');
+      attributes['aria-checked'].value = 'true';
     }
     const updatedTask = {
-      ...this.props.taskDetail,
-      done: e.target.attributes['aria-checked'].value
+      ...taskDetail,
+      taskDone: attributes['aria-checked'].value
     };
-
-    // CONTINUE HERE USE DESTRUCTURE to DEAL WITH THE NAMES
-    this.props.updateTask(this.props.cardIndex,this.props.taskIndex,updatedTask);
+    updateCard(cardIndex, taskIndex, updatedTask);
   }
 
   render() {
-    const taskIsDone = this.props.taskDetail.done === 'true';
+    const {taskDone, taskName} = this.props.taskDetail;
+    const taskIsDone = taskDone === 'true';
     if(taskIsDone) { return(
       <li>
-        <div className="checked" onClick={this.handleCheckbox} role="checkbox" aria-checked={this.props.taskDetail.done}></div>
-        <span>{this.props.taskDetail.name}</span>
+        <div name="taskDone" className="checked" onClick={this.handleCheckbox} role="checkbox" aria-checked={taskDone}></div>
+        <span name="taskName">{taskName}</span>
       </li>
     )} else { return(
       <li>
-        <div role="checkbox" onClick={this.handleCheckbox} aria-checked={this.props.taskDetail.done}></div>
-        <span>{this.props.taskDetail.name}</span>
+        <div name="taskDone" role="checkbox" onClick={this.handleCheckbox} aria-checked={taskDone}></div>
+        <span name="taskName">{taskName}</span>
       </li>
     )}
   }

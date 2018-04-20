@@ -3,19 +3,26 @@ import Task from './Task';
 
 class TaskCard extends React.Component {
 
-  updateCardTitle() {
-    console.log('------------!');
+  updateCardTitle(e,t) {
+    console.dir(e.currentTarget.textContent);
+    console.dir(t.props.details.cardName);
+    // const updatedCardTitle = {...this.props.details.cardName};
+    // console.log(updatedCardTitle);
+    // cardName: e.currentTarget.textContent
   }
 
   render() {
-    const {name,color,tasks} = this.props.details;
-    const divStyle = { backgroundColor: color };
+    const { cardName, cardColor, cardTasks } = this.props.details;
+    const { cardIndex, updateCard } = this.props;
+    const divStyle = { backgroundColor: cardColor };
     return(
       <div className="cardContainer" style={divStyle}>
-        <h6 contentEditable="true" onInput={this.updateCardTitle}>{name}</h6>
+
+        {/* CONTINUE HERE MAKE THE HEADER INTO A COMPONENT */}
+        <h6 name="cardName" contentEditable="true" onInput={(e) => {this.updateCardTitle(e,this)}}>{cardName}</h6>
         <ul>
-          {Object.keys(tasks).map(key => (
-            <Task key={key} cardIndex={this.props.cardIndex} taskIndex={key} taskDetail={tasks[key]} updateTask={this.props.updateTask} />
+          {Object.keys(cardTasks).map(key => (
+            <Task name="cardTasks" key={key} cardIndex={cardIndex} taskIndex={key} taskDetail={cardTasks[key]} updateCard={updateCard} />
           ))}
         </ul>
         <div className="cardToolBox">
