@@ -1,7 +1,7 @@
 import React from 'react';
 import sampleCards from './sampleCards';
-import TaskCard from './components/TaskCard';
 import AppHeader from './components/AppHeader';
+import Card from './components/Card';
 
 class App extends React.Component {
 
@@ -15,9 +15,9 @@ class App extends React.Component {
     });
   }
 
-  updateCard = (cardIndex, taskIndex, updatedElement) => {
+  updateCard = (cardIndex, updatedCard) => {
     const taskCards = {...this.state.taskCards};
-    taskCards[cardIndex].cardTasks[taskIndex] = updatedElement;
+    taskCards[cardIndex] = updatedCard;
     this.setState({
       taskCards: taskCards
     });
@@ -30,11 +30,18 @@ class App extends React.Component {
         <div className="cardWrapper">
 
           {Object.keys(this.state.taskCards).map(key => (
-            <TaskCard key={key} cardIndex={key} details={this.state.taskCards[key]} updateCard={this.updateCard} />
+            <Card
+              key={key}
+              cardIndex={key}
+              cardDetails={this.state.taskCards[key]}
+              updateCard={this.updateCard} />
           ))}
 
           <div className="sampleBtnWrapper">
-            <div className="btn" onClick={this.loadSamples}>Load Sample</div>
+            <div
+              className="btn"
+              onClick={this.loadSamples}>Load Sample
+            </div>
           </div>
 
         </div>
