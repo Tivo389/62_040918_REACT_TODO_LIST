@@ -2,7 +2,7 @@ const taskCards = {
 
   card1: {
     cardName: "Shopping List",
-    cardColor: "#fffee8",
+    cardColor: "#FEFFF4",
     cardTasks: {
       task1: {
         taskName: "Buy Milk",
@@ -21,7 +21,7 @@ const taskCards = {
 
   card2: {
     cardName: "Read Books",
-    cardColor: "#e6fff5",
+    cardColor: "#F3FFFB",
     cardTasks: {
       task1: {
         taskName: "Harry Potter - Azkaban Prison Break - ",
