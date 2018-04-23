@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader'
 import sampleCards from './sampleCards';
 import AppHeader from './components/AppHeader';
 import Card from './components/Card';
@@ -50,4 +51,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
