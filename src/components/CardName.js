@@ -2,21 +2,40 @@ import React from 'react';
 
 class CardName extends React.Component {
 
-  handleInput(e) {
-    console.log('=================');
-    console.dir(e.currentTarget.textContent);
+  handleInput = (e) => {
+    const {cardIndex, cardDetails, updateCard, updateLastCard} = this.props;
+    cardDetails.cardName = e.currentTarget.textContent;
+    const updatedCard = {
+      ...cardDetails
+    };
+    updateLastCard(cardIndex);
+    updateCard(cardIndex, updatedCard);
+  }
 
-    // CONTINUE HERE
+  componentDidUpdate() {
+    const card = document.querySelector(`[data-name=${this.props.cardIndex}]`);
+    // console.log({card});
+    const node = card.querySelector("[data-name='cardName']");
+    // console.log({node});
+    node.focus();
+    var textNode = node.lastChild;
+    var caret = textNode.length;
+    var range = document.createRange();
+    range.setStart(textNode, caret);
+    range.setEnd(textNode, caret);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
 
-    // console.dir(t.props.cardDetails.cardName);
-    // const updatedCardName = {...this.props.cardDetails.cardName};
-    // console.log(updatedCardName);
-    // cardName: e.currentTarget.textContent
+
   }
 
   render() {
     return(
-      <h6 contentEditable="true" onInput={this.handleInput}>
+      <h6
+        data-name="cardName"
+        contentEditable="true"
+        onInput={this.handleInput}>
         {this.props.cardName}
       </h6>
     );

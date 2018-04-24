@@ -7,14 +7,15 @@ import Card from './components/Card';
 class App extends React.Component {
 
   state = {
-    taskCards: {}
+    taskCards: {},
+    lastCard: ''
   };
 
   loadSamples = () => {
     this.setState({
       taskCards: sampleCards
     });
-  }
+  };
 
   updateCard = (cardIndex, updatedCard) => {
     const taskCards = {...this.state.taskCards};
@@ -22,6 +23,14 @@ class App extends React.Component {
     this.setState({
       taskCards: taskCards
     });
+  };
+
+  updateLastCard = (cardIndex) => {
+    console.log(cardIndex);
+    // CONTINUE HERE, you now have the last card index.
+    // Store that in the state
+    // Then pass that as a props to cardName
+    // The in compDidUpdate use it to specify cardName focus
   };
 
   render() {
@@ -35,7 +44,9 @@ class App extends React.Component {
               key={key}
               cardIndex={key}
               cardDetails={this.state.taskCards[key]}
-              updateCard={this.updateCard} />
+              updateCard={this.updateCard}
+              updateLastCard={this.updateLastCard}
+            />
           ))}
 
           <div className="sampleBtnWrapper">

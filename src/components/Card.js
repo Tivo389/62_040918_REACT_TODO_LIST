@@ -6,12 +6,19 @@ class Card extends React.Component {
 
   render() {
     const {cardName, cardColor, cardTasks} = this.props.cardDetails;
-    const {cardDetails, cardIndex, updateCard} = this.props;
+    const {cardIndex, cardDetails, updateCard, updateLastCard} = this.props;
     const divStyle = { backgroundColor: cardColor };
     return(
-      <div className="cardContainer" style={divStyle}>
+      <div className="cardContainer" data-name={cardIndex} style={divStyle}>
 
-        <CardName name="cardName" cardName={cardName} />
+        <CardName
+          name="cardName"
+          cardName={cardName}
+          cardIndex={cardIndex}
+          cardDetails={cardDetails}
+          updateCard={updateCard}
+          updateLastCard={updateLastCard}
+        />
         <ul>
           {Object.keys(cardTasks).map(key => (
             <CardTask
@@ -20,7 +27,8 @@ class Card extends React.Component {
               taskIndex={key}
               cardIndex={cardIndex}
               cardDetails={cardDetails}
-              updateCard={updateCard} />
+              updateCard={updateCard}
+            />
           ))}
         </ul>
         <div className="cardToolBox">
