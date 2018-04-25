@@ -20,10 +20,10 @@ class CardTask extends React.Component {
       ...cardDetails
     };
     updateCard(cardIndex, updatedCard);
-  }
+  };
 
   render() {
-    const {cardDetails, taskIndex} = this.props;
+    const {cardDetails, taskIndex, handleInput} = this.props;
     const taskDetail = cardDetails.cardTasks[taskIndex];
     const {taskDone, taskName} = taskDetail;
     const taskIsDone = taskDone === 'true';
@@ -31,25 +31,31 @@ class CardTask extends React.Component {
       return(
         <li>
           <div
-            name="taskDone"
             className="checked"
             onClick={this.handleCheckbox}
             role="checkbox"
             aria-checked={taskDone}>
           </div>
-          <span name="taskName">{taskName}</span>
+          <span
+            data-name={taskIndex}>
+            {taskName}
+          </span>
         </li>
       )
     } else {
       return(
         <li>
           <div
-            name="taskDone"
             role="checkbox"
             onClick={this.handleCheckbox}
             aria-checked={taskDone}>
           </div>
-          <span name="taskName">{taskName}</span>
+          <span
+            data-name={taskIndex}
+            contentEditable="true"
+            onInput={handleInput}>
+            {taskName}
+          </span>
         </li>
       )
     }

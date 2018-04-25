@@ -26,11 +26,9 @@ class App extends React.Component {
   };
 
   updateLastCard = (cardIndex) => {
-    console.log(cardIndex);
-    // CONTINUE HERE, you now have the last card index.
-    // Store that in the state
-    // Then pass that as a props to cardName
-    // The in compDidUpdate use it to specify cardName focus
+    this.setState({
+      lastCard: cardIndex
+    });
   };
 
   render() {
@@ -44,15 +42,15 @@ class App extends React.Component {
               key={key}
               cardIndex={key}
               cardDetails={this.state.taskCards[key]}
+              lastCard={this.state.lastCard}
               updateCard={this.updateCard}
               updateLastCard={this.updateLastCard}
             />
           ))}
 
           <div className="sampleBtnWrapper">
-            <div
-              className="btn"
-              onClick={this.loadSamples}>Load Sample
+            <div className="btn" onClick={this.loadSamples}>
+              Load Sample
             </div>
           </div>
 
