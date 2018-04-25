@@ -7,20 +7,27 @@ import Card from './components/Card';
 class App extends React.Component {
 
   state = {
-    taskCards: {}
+    taskCards: {},
+    lastCard: ''
   };
 
   loadSamples = () => {
     this.setState({
       taskCards: sampleCards
     });
-  }
+  };
 
   updateCard = (cardIndex, updatedCard) => {
     const taskCards = {...this.state.taskCards};
     taskCards[cardIndex] = updatedCard;
     this.setState({
       taskCards: taskCards
+    });
+  };
+
+  updateLastCard = (cardIndex) => {
+    this.setState({
+      lastCard: cardIndex
     });
   };
 
@@ -35,13 +42,15 @@ class App extends React.Component {
               key={key}
               cardIndex={key}
               cardDetails={this.state.taskCards[key]}
-              updateCard={this.updateCard} />
+              lastCard={this.state.lastCard}
+              updateCard={this.updateCard}
+              updateLastCard={this.updateLastCard}
+            />
           ))}
 
           <div className="sampleBtnWrapper">
-            <div
-              className="btn"
-              onClick={this.loadSamples}>Load Sample
+            <div className="btn" onClick={this.loadSamples}>
+              Load Sample
             </div>
           </div>
 
