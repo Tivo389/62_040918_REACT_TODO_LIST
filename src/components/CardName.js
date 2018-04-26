@@ -7,7 +7,9 @@ class CardName extends React.Component {
       <h6
         data-name="cardName"
         contentEditable="true"
-        onInput={this.props.handleInput}>
+        onInput={this.props.handleInput}
+        onKeyDown={this.props.getCaretPos}
+        >
         {this.props.cardDetails.cardName}
       </h6>
     );

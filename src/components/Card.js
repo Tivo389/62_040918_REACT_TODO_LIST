@@ -20,6 +20,34 @@ class Card extends React.Component {
     updateCard(cardIndex, updatedCard);
   };
 
+  getCaretPos = (e) => {
+    const element = e.currentTarget;  // Define the current element
+    let caretOffset = 0;  // Set default caret position
+    debugger;
+    // CONTINUE HERE BY ANALYISNG THIS CODE, IT SEEMS TO WORK
+    const doc = element.ownerDocument || element.document;
+    const win = doc.defaultView || doc.parentWindow;
+    let sel;
+    if (typeof win.getSelection !== "undefined") {
+        sel = win.getSelection();
+        if (sel.rangeCount > 0) {
+            const range = win.getSelection().getRangeAt(0);
+            const preCaretRange = range.cloneRange();
+            preCaretRange.selectNodeContents(element);
+            preCaretRange.setEnd(range.endContainer, range.endOffset);
+            caretOffset = preCaretRange.toString().length;
+        }
+    } else if ( (sel = doc.selection) && sel.type !== "Control") {
+        const textRange = sel.createRange();
+        const preCaretTextRange = doc.body.createTextRange();
+        preCaretTextRange.moveToElementText(element);
+        preCaretTextRange.setEndPoint("EndToEnd", textRange);
+        caretOffset = preCaretTextRange.text.length;
+    }
+    console.log(caretOffset);
+    return caretOffset;
+  };
+
   componentDidUpdate() {
     const cardName = document.querySelector(`[data-name=${this.props.lastCard}]`);
     const cardProperty = cardName.querySelector(`[data-name=${this.props.lastProperty}]`);
@@ -46,6 +74,7 @@ class Card extends React.Component {
           cardDetails={cardDetails}
           lastCard={lastCard}
           handleInput={this.handleInput}
+          getCaretPos={this.getCaretPos}
           updateCard={updateCard}
         />
         <ul>
