@@ -8,7 +8,8 @@ class App extends React.Component {
 
   state = {
     taskCards: {},
-    lastCard: ''
+    lastCard: '',
+    lastProperty: ''
   };
 
   loadSamples = () => {
@@ -25,9 +26,10 @@ class App extends React.Component {
     });
   };
 
-  updateLastCard = (cardIndex) => {
+  updateLastState = (cardIndex, property) => {
     this.setState({
-      lastCard: cardIndex
+      lastCard: cardIndex,
+      lastProperty: property
     });
   };
 
@@ -43,8 +45,9 @@ class App extends React.Component {
               cardIndex={key}
               cardDetails={this.state.taskCards[key]}
               lastCard={this.state.lastCard}
+              lastProperty={this.state.lastProperty}
               updateCard={this.updateCard}
-              updateLastCard={this.updateLastCard}
+              updateLastState={this.updateLastState}
             />
           ))}
 

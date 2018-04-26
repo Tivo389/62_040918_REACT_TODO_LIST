@@ -4,8 +4,8 @@ class CardTask extends React.Component {
 
   handleCheckbox = (e) => {
     const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
-    const taskDetail = cardDetails.cardTasks[taskIndex];
     const {classList, attributes} = e.currentTarget;
+    const taskDetail = cardDetails.cardTasks[taskIndex];
     const isChecked = attributes['aria-checked'].value === 'true';
     if(isChecked) {
       classList.remove('checked');

@@ -5,7 +5,7 @@ import CardName from './CardName';
 class Card extends React.Component {
 
   handleInput = (e) => {
-    const {cardIndex, cardDetails, updateCard, updateLastCard} = this.props;
+    const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
     const property = e.currentTarget.dataset.name;
     if(property.includes('task')) {
       const task = {...cardDetails.cardTasks};
@@ -16,16 +16,14 @@ class Card extends React.Component {
     const updatedCard = {
       ...cardDetails
     };
-    updateLastCard(cardIndex);
+    updateLastState(cardIndex, property);
     updateCard(cardIndex, updatedCard);
   };
 
   componentDidUpdate() {
-    // CONTINUE HERE
-    // Currently it updates from the header but it needs to know what it was adjusting last.
-    // Might have to make a new state last Property?
-    const cardName = document.querySelector(`[data-name=${this.props.lastCard}] h6`);
-    const textNode = cardName.firstChild;
+    const cardName = document.querySelector(`[data-name=${this.props.lastCard}]`);
+    const cardProperty = cardName.querySelector(`[data-name=${this.props.lastProperty}]`);
+    const textNode = cardProperty.firstChild;
     if(textNode != null) {
       const caret = textNode.length;
       const range = document.createRange();
@@ -38,7 +36,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const {cardIndex, cardDetails, lastCard, updateCard, updateLastCard} = this.props;
+    const {cardIndex, cardDetails, lastCard, updateCard} = this.props;
     const divStyle = { backgroundColor: cardDetails.cardColor };
     return(
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
@@ -49,7 +47,6 @@ class Card extends React.Component {
           lastCard={lastCard}
           handleInput={this.handleInput}
           updateCard={updateCard}
-          updateLastCard={updateLastCard}
         />
         <ul>
           {Object.keys(cardDetails.cardTasks).map(key => (
