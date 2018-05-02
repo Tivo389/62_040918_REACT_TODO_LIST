@@ -28,6 +28,8 @@ class App extends React.Component {
   };
 
   updateLastState = (card, property, caret) => {
+    console.log('====================');
+    console.log({card, property, caret});
     this.setState({
       lastCard: card,
       lastProperty: property,
