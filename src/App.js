@@ -8,8 +8,8 @@ class App extends React.Component {
 
   state = {
     taskCards: {},
-    lastCard: '',
-    lastProperty: '',
+    lastCard: 'card1',
+    lastProperty: 'cardName',
     lastCaretPosition: 0
   };
 
@@ -50,6 +50,7 @@ class App extends React.Component {
               cardDetails={this.state.taskCards[key]}
               lastCard={this.state.lastCard}
               lastProperty={this.state.lastProperty}
+              lastCaretPosition={this.state.lastCaretPosition}
               updateCard={this.updateCard}
               updateLastState={this.updateLastState}
             />
