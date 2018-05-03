@@ -1,0 +1,66 @@
+$colorUnit: 30px;
+
+.colorPicker {
+  position: relative;
+  padding: 0 0 20px 0;
+  margin: 0 10px -20px 0;
+  &:hover .colorPalette {
+    visibility: initial;
+  }
+}
+
+.colorPalette {
+  visibility: hidden;
+  background-color: $color--white;
+  border-radius: calc(#{$colorUnit} / 6);
+  top: 60%;
+  box-shadow: $box-shadow--default;
+  display: inline-block;
+  left: -10px;
+  padding: calc(#{$colorUnit} / 6);
+  position: absolute;
+  div {
+    display: flex;
+    justify-content: space-between;
+    + div {
+      margin-top: calc(#{$colorUnit} / 8);
+    }
+  }
+}
+
+[class*=colorSwatch] {
+  display: inline-block;
+  width: $colorUnit;
+  height: $colorUnit;
+  border-radius: $colorUnit;
+  &:hover {
+    border: 2px solid $color--gray;
+  }
+  + [class*=colorSwatch] {
+    margin-left: calc(#{$colorUnit} / 8);
+  }
+}
+
+.color1 {
+  background-color: #F9F983;
+}
+
+.color2 {
+  background-color: #a1dfff;
+}
+
+.color3 {
+  background-color: #FF8DA7;
+}
+
+.color4 {
+  background-color: #B6FF8D;
+}
+
+.color5 {
+  background-color: #DE8DFF;
+}
+
+.color6 {
+  background-color: #FAFAFA;
+}

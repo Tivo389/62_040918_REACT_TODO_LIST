@@ -47,7 +47,7 @@ table {
   border-spacing: 0; }
 
 h1, h2, h3, h4, h5, h6, p, a, li {
-  color: #222222;
+  color: #000000;
   line-height: 125%;
   text-align: left; }
 
@@ -77,7 +77,7 @@ p, a, li {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 a:visited, a:focus, a:active {
-  color: #222222;
+  color: #000000;
   outline: none;
   text-decoration: none; }
 
@@ -166,7 +166,7 @@ a:visited, a:focus, a:active {
     width: 100%; }
 
 .version {
-  color: #222222;
+  color: #000000;
   font-size: 8px;
   font-weight: 500;
   left: 5px;
@@ -206,6 +206,57 @@ a:visited, a:focus, a:active {
 .width--10 {
   width: 10%; }
 
+.colorPicker {
+  position: relative;
+  padding: 0 0 20px 0;
+  margin: 0 10px -20px 0; }
+  .colorPicker:hover .colorPalette {
+    visibility: initial; }
+
+.colorPalette {
+  visibility: hidden;
+  background-color: #FFFFFF;
+  border-radius: calc(30px / 6);
+  top: 60%;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.24), 0 0 3px rgba(0, 0, 0, 0.12);
+  display: inline-block;
+  left: -10px;
+  padding: calc(30px / 6);
+  position: absolute; }
+  .colorPalette div {
+    display: flex;
+    justify-content: space-between; }
+    .colorPalette div + div {
+      margin-top: calc(30px / 8); }
+
+[class*=colorSwatch] {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px; }
+  [class*=colorSwatch]:hover {
+    border: 2px solid #777777; }
+  [class*=colorSwatch] + [class*=colorSwatch] {
+    margin-left: calc(30px / 8); }
+
+.color1 {
+  background-color: #F9F983; }
+
+.color2 {
+  background-color: #a1dfff; }
+
+.color3 {
+  background-color: #FF8DA7; }
+
+.color4 {
+  background-color: #B6FF8D; }
+
+.color5 {
+  background-color: #DE8DFF; }
+
+.color6 {
+  background-color: #FAFAFA; }
+
 header {
   flex: 1 100%;
   padding: 0 2rem;
@@ -213,6 +264,30 @@ header {
 
 h1 {
   text-align: center; }
+
+div[role="checkbox"] {
+  align-items: center;
+  border-radius: 0.35rem;
+  border: 1px solid #777777;
+  display: inline-flex;
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  justify-content: center;
+  margin-right: 0.75rem; }
+  div[role="checkbox"]:hover {
+    border: 1px solid #333333; }
+
+div[role="checkbox"].checked {
+  border: 1px solid #333333;
+  background-color: #333333; }
+  div[role="checkbox"].checked:after {
+    color: #FFFFFF;
+    content: "\f00c";
+    display: inline-block;
+    font-family: FontAwesome;
+    line-height: 1; }
+  div[role="checkbox"].checked + span {
+    text-decoration: line-through; }
 
 .app {
   padding: 5vw;
@@ -249,51 +324,25 @@ h1 {
     margin-bottom: 1.25rem;
     letter-spacing: 0.05rem; }
     .cardContainer h6:focus {
-      outline: unset; }
+      outline: 0; }
   .cardContainer li {
     align-items: center;
     display: flex;
     font-family: 'Roboto Slab', serif;
     margin-bottom: 1rem; }
     .cardContainer li:last-child {
-      margin-bottom: unset; }
-
-div[role="checkbox"] {
-  align-items: center;
-  border-radius: 0.35rem;
-  border: 1px solid #777777;
-  display: inline-flex;
-  flex: 0 0 1.6rem;
-  height: 1.6rem;
-  justify-content: center;
-  margin-right: 0.75rem; }
-  div[role="checkbox"]:hover {
-    border: 1px solid #333333; }
-
-div[role="checkbox"].checked {
-  border: 1px solid #333333;
-  background-color: #333333; }
-  div[role="checkbox"].checked:after {
-    color: #FFFFFF;
-    content: "\f00c";
-    display: inline-block;
-    font-family: FontAwesome;
-    line-height: 1; }
-  div[role="checkbox"].checked + span {
-    text-decoration: line-through; }
+      margin-bottom: 0; }
 
 .cardToolBox {
-  border-top: 1px solid #cccccc;
-  color: #cccccc;
+  border-top: 1px solid #777777;
+  color: #777777;
   font-size: 1.4rem;
   padding-top: calc(1.25rem * 1.25);
   margin-top: calc(1.25rem * 1.25); }
-  .cardToolBox svg {
-    margin-right: 0.75rem; }
-    .cardToolBox svg:hover {
-      color: #777777; }
-    .cardToolBox svg:last-child {
-      margin-right: unset; }
+  .cardToolBox > *:hover {
+    color: #333333; }
+  .cardToolBox > *:last-child {
+    margin-right: 0; }
 
 .sampleBtnWrapper {
   width: 100%;
