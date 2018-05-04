@@ -55,19 +55,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h1 {
-  font-size: calc(1.4rem * 4.48); }
-
-h2 {
   font-size: calc(1.4rem * 3.32); }
 
-h3 {
+h2 {
   font-size: calc(1.4rem * 2.46); }
 
-h4 {
+h3 {
   font-size: calc(1.4rem * 1.83); }
 
-h5 {
+h4 {
   font-size: calc(1.4rem * 1.35); }
+
+h5 {
+  font-size: calc(1.4rem * 1.10);
+  font-weight: bolder; }
 
 h6 {
   font-size: calc(1.4rem * 1.10); }
@@ -208,8 +209,8 @@ a:visited, a:focus, a:active {
 
 .colorPicker {
   position: relative;
-  padding: 0 0 20px 0;
-  margin: 0 10px -20px 0; }
+  padding: 0 10px 20px 0;
+  margin: 0 0 -20px 0; }
   .colorPicker:hover .colorPalette {
     visibility: initial; }
 

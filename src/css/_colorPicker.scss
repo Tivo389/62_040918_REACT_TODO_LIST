@@ -2,8 +2,8 @@ $colorUnit: 30px;
 
 .colorPicker {
   position: relative;
-  padding: 0 0 20px 0;
-  margin: 0 10px -20px 0;
+  padding: 0 10px 20px 0;
+  margin: 0 0 -20px 0;
   &:hover .colorPalette {
     visibility: initial;
   }
