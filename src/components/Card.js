@@ -9,6 +9,7 @@ class Card extends React.Component {
     const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
     const property = e.currentTarget.dataset.name;
     const caret = this.getCaretPos(e);
+
     if(property.includes('task')) {
       const task = {...cardDetails.cardTasks};
       task[property].taskName = e.currentTarget.textContent;
@@ -18,6 +19,7 @@ class Card extends React.Component {
     const updatedCard = {
       ...cardDetails
     };
+
     updateLastState(cardIndex, property, caret);
     updateCard(cardIndex, updatedCard);
   };
@@ -45,22 +47,24 @@ class Card extends React.Component {
   };
 
   componentDidUpdate() {
-    const cardName = document.querySelector(`[data-name=${this.props.lastCard}]`) || '';
-    const cardProperty = cardName.querySelector(`[data-name=${this.props.lastProperty}]`) || '';
-    const textNode = cardProperty.firstChild;
-    if(textNode != null) {
-      const caret = this.props.lastCaretPosition;
-      const range = document.createRange();
-      range.setStart(textNode, caret);
-      range.setEnd(textNode, caret);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
+    if(this.props.lastCard !== '') {
+      const cardName = document.querySelector(`[data-name=${this.props.lastCard}]`);
+      const cardProperty = cardName.querySelector(`[data-name=${this.props.lastInput}]`);
+      const textNode = cardProperty.firstChild;
+      if(textNode != null) {
+        const caret = this.props.lastCaretPosition;
+        const range = document.createRange();
+        range.setStart(textNode, caret);
+        range.setEnd(textNode, caret);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
     }
   }
 
   render() {
-    const {cardIndex, cardDetails, lastCard, updateCard} = this.props;
+    const {cardIndex, cardDetails, lastCard, updateCard, deleteCard} = this.props;
     const divStyle = { backgroundColor: cardDetails.cardColor };
     return(
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
@@ -85,8 +89,15 @@ class Card extends React.Component {
           ))}
         </ul>
         <div className="cardToolBox">
-          <ColorPicker />
-          <i className="fas fa-trash-alt"></i>
+          <ColorPicker
+            name="cardColor"
+            cardIndex={cardIndex}
+            cardDetails={cardDetails}
+            updateCard={updateCard}
+          />
+          <span onClick={() => deleteCard(cardIndex)}>
+            <i className="fas fa-trash-alt"></i>
+          </span>
         </div>
       </div>
     );

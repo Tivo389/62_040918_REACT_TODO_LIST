@@ -1,4 +1,4 @@
-const taskCards = {
+const sampleCards = {
 
   card1: {
     cardName: "Shopping List",
@@ -36,4 +36,4 @@ const taskCards = {
 
 };
 
-export default taskCards;
+export default sampleCards;

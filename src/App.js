@@ -8,19 +8,22 @@ class App extends React.Component {
 
   state = {
     taskCards: {},
-    lastCard: 'card1',
-    lastProperty: 'cardName',
+    lastCard: '',
+    lastInput: '',
     lastCaretPosition: 0
   };
 
   loadSamples = () => {
     this.setState({
-      taskCards: sampleCards
+      taskCards: sampleCards,
+      lastCard: '',
+      lastInput: '',
+      lastCaretPosition: 0
     });
   };
 
   updateCard = (cardIndex, updatedCard) => {
-    const taskCards = {...this.state.taskCards};
+    const taskCards = {...this.state.taskCards}
     taskCards[cardIndex] = updatedCard;
     this.setState({
       taskCards: taskCards
@@ -28,12 +31,19 @@ class App extends React.Component {
   };
 
   updateLastState = (card, property, caret) => {
-    console.log('====================');
-    console.log({card, property, caret});
     this.setState({
       lastCard: card,
-      lastProperty: property,
+      lastInput: property,
       lastCaretPosition: caret
+    });
+  };
+
+  deleteCard = (cardIndex) => {
+    const taskCards = {...this.state.taskCards};
+    delete taskCards[cardIndex];
+    // taskCards[cardIndex] = null; // If you want to update Firebase the value must be null.
+    this.setState({
+      taskCards: taskCards
     });
   };
 
@@ -49,10 +59,12 @@ class App extends React.Component {
               cardIndex={key}
               cardDetails={this.state.taskCards[key]}
               lastCard={this.state.lastCard}
-              lastProperty={this.state.lastProperty}
+              lastInput={this.state.lastInput}
               lastCaretPosition={this.state.lastCaretPosition}
               updateCard={this.updateCard}
               updateLastState={this.updateLastState}
+              deleteCard={this.deleteCard}
+              samples={sampleCards}
             />
           ))}
 
