@@ -12,7 +12,7 @@ class Card extends React.Component {
     const updatedCard = {...cardDetails};
 
     if(property.includes('task')) {
-      // CONTINUE HERE. MAKE A POST IT FOR THIS AND ASK ON SLACK.
+      // CONTINUE HERE. JUST FINISHED THIS CHECK OTHER AREAS.
       // VERSION 4 : [IT WORKS!!!!!]
       const updatedTask = {...cardDetails.cardTasks[property]};
       updatedTask.taskName = e.currentTarget.textContent;
