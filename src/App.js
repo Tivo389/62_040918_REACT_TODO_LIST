@@ -64,7 +64,7 @@ class App extends React.Component {
               updateCard={this.updateCard}
               updateLastState={this.updateLastState}
               deleteCard={this.deleteCard}
-              samples={sampleCards}
+              samples={sampleCards} // TEMP
             />
           ))}
 

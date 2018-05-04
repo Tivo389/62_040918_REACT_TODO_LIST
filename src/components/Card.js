@@ -9,16 +9,29 @@ class Card extends React.Component {
     const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
     const property = e.currentTarget.dataset.name;
     const caret = this.getCaretPos(e);
+    const updatedCard = {...cardDetails};
 
     if(property.includes('task')) {
-      const task = {...cardDetails.cardTasks};
-      task[property].taskName = e.currentTarget.textContent;
+      // CONTINUE HERE. MAKE A POST IT FOR THIS AND ASK ON SLACK.
+      // VERSION 4 : [IT WORKS!!!!!]
+      const updatedTask = {...cardDetails.cardTasks[property]};
+      updatedTask.taskName = e.currentTarget.textContent;
+      const updatedTasks = {...cardDetails.cardTasks};
+      updatedTasks[property] = updatedTask;
+      updatedCard.cardTasks = updatedTasks;
+      // VERSION 3 : [NO => AFFECTS SAMPLE]
+      // This DOES NOT affect the sample, but it needs to go one tier deeper.
+      // updatedTasks[property] = e.currentTarget.textContent;
+      // This DOES affect the sample.
+      // updatedTasks[property].taskName = e.currentTarget.textContent;
+      // VERSION 2 : It works but should I copy all the cardTasks first?
+      // const updatedTask = {...cardDetails.cardTasks[property]};
+      // updatedTask.taskName = e.currentTarget.textContent;
+      // VERSION 1 : [NO => AFFECTS SAMPLE]
+      // updatedCard.cardTasks[property].taskName = e.currentTarget.textContent;
     } else {
-      cardDetails[property] = e.currentTarget.textContent;
+      updatedCard[property] = e.currentTarget.textContent;
     }
-    const updatedCard = {
-      ...cardDetails
-    };
 
     updateLastState(cardIndex, property, caret);
     updateCard(cardIndex, updatedCard);
@@ -64,16 +77,14 @@ class Card extends React.Component {
   }
 
   render() {
-    const {cardIndex, cardDetails, lastCard, updateCard, deleteCard} = this.props;
+    const {cardIndex, cardDetails, updateCard, deleteCard} = this.props;
     const divStyle = { backgroundColor: cardDetails.cardColor };
     return(
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
         <CardName
           name="cardName"
           cardDetails={cardDetails}
-          lastCard={lastCard}
           handleInput={this.handleInput}
-          updateCard={updateCard}
         />
         <ul>
           {Object.keys(cardDetails.cardTasks).map(key => (
