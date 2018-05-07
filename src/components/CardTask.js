@@ -32,14 +32,15 @@ class CardTask extends React.Component {
         <li>
           <div
             className="checked"
-            onClick={this.handleCheckbox}
             role="checkbox"
+            onClick={this.handleCheckbox}
             aria-checked={taskDone}>
           </div>
           <span
             data-name={taskIndex}>
             {taskName}
           </span>
+        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
         </li>
       )
     } else {
@@ -56,6 +57,7 @@ class CardTask extends React.Component {
             onInput={handleInput}>
             {taskName}
           </span>
+        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
         </li>
       )
     }

@@ -29,6 +29,9 @@ div[role="checkbox"] {
   &:hover {
     border: 1px solid $color--darkgray;
   }
+  + span {
+    width: 100%;
+  }
 }
 
 div[role="checkbox"].checked {

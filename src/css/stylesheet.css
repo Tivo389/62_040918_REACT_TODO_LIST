@@ -277,6 +277,8 @@ div[role="checkbox"] {
   margin-right: 0.75rem; }
   div[role="checkbox"]:hover {
     border: 1px solid #333333; }
+  div[role="checkbox"] + span {
+    width: 100%; }
 
 div[role="checkbox"].checked {
   border: 1px solid #333333;
