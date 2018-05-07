@@ -40,7 +40,7 @@ class CardTask extends React.Component {
             data-name={taskIndex}>
             {taskName}
           </span>
-        {/*ADD A DELETE TASK BUTTON HERE...?*/}
+        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
         </li>
       )
     } else {
@@ -57,7 +57,7 @@ class CardTask extends React.Component {
             onInput={handleInput}>
             {taskName}
           </span>
-        {/*ADD A DELETE TASK BUTTON HERE...?*/}
+        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
         </li>
       )
     }
