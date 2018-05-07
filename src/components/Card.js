@@ -1,4 +1,5 @@
 import React from 'react';
+import update from 'immutability-helper';
 import CardTask from './CardTask';
 import CardName from './CardName';
 import ColorPicker from './ColorPicker';
@@ -9,32 +10,29 @@ class Card extends React.Component {
     const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
     const property = e.currentTarget.dataset.name;
     const caret = this.getCaretPos(e);
-    const updatedCard = {...cardDetails};
+    let updatedCard = {...cardDetails};
 
     if(property.includes('task')) {
-      // CONTINUE HERE. JUST FINISHED THIS CHECK OTHER AREAS.
-      // VERSION 4 : [IT WORKS!!!!!]
-      const updatedTask = {...cardDetails.cardTasks[property]};
-      updatedTask.taskName = e.currentTarget.textContent;
-      const updatedTasks = {...cardDetails.cardTasks};
-      updatedTasks[property] = updatedTask;
-      updatedCard.cardTasks = updatedTasks;
-      // VERSION 3 : [NO => AFFECTS SAMPLE]
-      // This DOES NOT affect the sample, but it needs to go one tier deeper.
-      // updatedTasks[property] = e.currentTarget.textContent;
-      // This DOES affect the sample.
-      // updatedTasks[property].taskName = e.currentTarget.textContent;
-      // VERSION 2 : It works but should I copy all the cardTasks first?
-      // const updatedTask = {...cardDetails.cardTasks[property]};
-      // updatedTask.taskName = e.currentTarget.textContent;
-      // VERSION 1 : [NO => AFFECTS SAMPLE]
-      // updatedCard.cardTasks[property].taskName = e.currentTarget.textContent;
+      // WITH IMMUTABILITY HELPER
+      updatedCard = update(updatedCard, {  //01. Update 'updatedCard's...
+        cardTasks: {  //02. 'cardTasks'...
+          [property]: {  //03. property = current 'task'
+            $merge: { taskName:e.currentTarget.textContent }  //04. Merge this object with the data-structure
+          }
+        }
+      });
+      // WITHOUT IMMUTABILITY HELPER
+      // const updatedTask = {...cardDetails.cardTasks[property]};  //01. Make copy of the 'task'
+      // updatedTask.taskName = e.currentTarget.textContent;  //02. Reassign the 'taskName' in the 'task'
+      // const updatedTasks = {...cardDetails.cardTasks};  //03. Make a copy of the 'task[S]'
+      // updatedTasks[property] = updatedTask;  //04. Reassign the 'task' in the 'task[S]'
+      // updatedCard.cardTasks = updatedTasks;  //05. Reassign the 'task[S]' in the 'card'
     } else {
       updatedCard[property] = e.currentTarget.textContent;
     }
-
     updateLastState(cardIndex, property, caret);
     updateCard(cardIndex, updatedCard);
+
   };
 
   getCaretPos = (e) => {
@@ -60,12 +58,13 @@ class Card extends React.Component {
   };
 
   componentDidUpdate() {
-    if(this.props.lastCard !== '') {
-      const cardName = document.querySelector(`[data-name=${this.props.lastCard}]`);
-      const cardProperty = cardName.querySelector(`[data-name=${this.props.lastInput}]`);
+    const { lastCard, lastProperty, lastCaretPosition } = this.props;
+    if(lastCard !== '' && (lastProperty.includes('task') || lastProperty.includes('cardName'))) {
+      const cardName = document.querySelector(`[data-name=${lastCard}]`);
+      const cardProperty = cardName.querySelector(`[data-name=${lastProperty}]`);
       const textNode = cardProperty.firstChild;
       if(textNode != null) {
-        const caret = this.props.lastCaretPosition;
+        const caret = lastCaretPosition;
         const range = document.createRange();
         range.setStart(textNode, caret);
         range.setEnd(textNode, caret);
@@ -77,7 +76,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const {cardIndex, cardDetails, updateCard, deleteCard} = this.props;
+    const {cardIndex, cardDetails, updateCard, deleteCard, updateLastState} = this.props;
     const divStyle = { backgroundColor: cardDetails.cardColor };
     return(
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
@@ -85,6 +84,7 @@ class Card extends React.Component {
           name="cardName"
           cardDetails={cardDetails}
           handleInput={this.handleInput}
+          restoreCaretPosition={this.restoreCaretPosition}
         />
         <ul>
           {Object.keys(cardDetails.cardTasks).map(key => (
@@ -105,6 +105,7 @@ class Card extends React.Component {
             cardIndex={cardIndex}
             cardDetails={cardDetails}
             updateCard={updateCard}
+            updateLastState={updateLastState}
           />
           <span onClick={() => deleteCard(cardIndex)}>
             <i className="fas fa-trash-alt"></i>
