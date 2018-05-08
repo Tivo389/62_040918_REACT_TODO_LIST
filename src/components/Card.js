@@ -11,7 +11,6 @@ class Card extends React.Component {
     const property = e.currentTarget.dataset.name;
     const caret = this.getCaretPos(e);
     let updatedCard = {...cardDetails};
-
     if(property.includes('task')) {
       // WITH IMMUTABILITY HELPER
       updatedCard = update(updatedCard, {  //01. Update 'updatedCard's...
@@ -32,7 +31,6 @@ class Card extends React.Component {
     }
     updateLastState(cardIndex, property, caret);
     updateCard(cardIndex, updatedCard);
-
   };
 
   getCaretPos = (e) => {
@@ -78,7 +76,7 @@ class Card extends React.Component {
   render() {
     const {cardIndex, cardDetails, updateCard, deleteCard, updateLastState} = this.props;
     const divStyle = { backgroundColor: cardDetails.cardColor };
-    return(
+    return (
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
         <CardName
           name="cardName"
@@ -94,8 +92,8 @@ class Card extends React.Component {
               taskIndex={key}
               cardIndex={cardIndex}
               cardDetails={cardDetails}
-              handleInput={this.handleInput}
               updateCard={updateCard}
+              handleInput={this.handleInput}
             />
           ))}
         </ul>

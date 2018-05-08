@@ -22,13 +22,25 @@ class CardTask extends React.Component {
     updateCard(cardIndex, updatedCard);
   };
 
+  deleteTask = (e) => {
+    // CONTINUE HERE MIGHT BE BEST TO VISUALISE THIS PROJECt StrUCTRE ONCE
+    // const {taskIndex, cardDetails} = this.props;
+    // let updatedCard = {...cardDetails};
+    // console.log(updatedCard);
+    // updatedCard = update(updatedCard, {
+    //   cardTasks: {
+    //     [taskIndex]: null
+    //   }
+    // });
+  };
+
   render() {
     const {cardDetails, taskIndex, handleInput} = this.props;
     const taskDetail = cardDetails.cardTasks[taskIndex];
     const {taskDone, taskName} = taskDetail;
     const taskIsDone = taskDone === 'true';
     if(taskIsDone) {
-      return(
+      return (
         <li>
           <div
             className="checked"
@@ -40,7 +52,12 @@ class CardTask extends React.Component {
             data-name={taskIndex}>
             {taskName}
           </span>
-        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
+          <span
+            data-name="delete"
+            role="button"
+            onClick={this.deleteTask}>
+            <i className="fas fa-times-circle"></i>
+          </span>
         </li>
       )
     } else {
@@ -57,7 +74,12 @@ class CardTask extends React.Component {
             onInput={handleInput}>
             {taskName}
           </span>
-        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
+          <span
+            data-name="delete"
+            role="button"
+            onClick={this.deleteTask}>
+            <i className="fas fa-times-circle"></i>
+          </span>
         </li>
       )
     }

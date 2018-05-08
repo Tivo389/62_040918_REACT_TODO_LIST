@@ -55,26 +55,26 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h1 {
-  font-size: calc(1.4rem * 3.32); }
+  font-size: calc(1.6rem * 3.32); }
 
 h2 {
-  font-size: calc(1.4rem * 2.46); }
+  font-size: calc(1.6rem * 2.46); }
 
 h3 {
-  font-size: calc(1.4rem * 1.83); }
+  font-size: calc(1.6rem * 1.83); }
 
 h4 {
-  font-size: calc(1.4rem * 1.35); }
+  font-size: calc(1.6rem * 1.35); }
 
 h5 {
-  font-size: calc(1.4rem * 1.10);
+  font-size: calc(1.6rem * 1.10);
   font-weight: bolder; }
 
 h6 {
-  font-size: calc(1.4rem * 1.10); }
+  font-size: calc(1.6rem * 1.10); }
 
 p, a, li {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 a:visited, a:focus, a:active {
@@ -287,10 +287,23 @@ div[role="checkbox"].checked {
     color: #FFFFFF;
     content: "\f00c";
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.2rem;
+    font-weight: 900;
     line-height: 1; }
   div[role="checkbox"].checked + span {
     text-decoration: line-through; }
+
+li span[data-name="delete"] {
+  font-size: 1.8rem;
+  visibility: hidden;
+  margin-left: 1em; }
+
+li:hover span[data-name="delete"] {
+  visibility: visible;
+  opacity: 0.5; }
+  li:hover span[data-name="delete"]:hover {
+    opacity: 1; }
 
 .app {
   padding: 5vw;
@@ -332,14 +345,14 @@ div[role="checkbox"].checked {
     align-items: center;
     display: flex;
     font-family: 'Roboto Slab', serif;
-    margin-bottom: 1rem; }
+    margin-bottom: 0.75em; }
     .cardContainer li:last-child {
       margin-bottom: 0; }
 
 .cardToolBox {
   border-top: 1px solid #777777;
   color: #777777;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding-top: calc(1.25rem * 1.25);
   margin-top: calc(1.25rem * 1.25); }
   .cardToolBox > *:hover {
