@@ -11,7 +11,6 @@ class Card extends React.Component {
     const property = e.currentTarget.dataset.name;
     const caret = this.getCaretPos(e);
     let updatedCard = {...cardDetails};
-
     if(property.includes('task')) {
       // WITH IMMUTABILITY HELPER
       updatedCard = update(updatedCard, {  //01. Update 'updatedCard's...
@@ -32,7 +31,6 @@ class Card extends React.Component {
     }
     updateLastState(cardIndex, property, caret);
     updateCard(cardIndex, updatedCard);
-
   };
 
   getCaretPos = (e) => {
@@ -57,6 +55,12 @@ class Card extends React.Component {
     return caretOffset;
   };
 
+  addTask = () => {
+    console.log('addTask ACTIVATED!');
+    // CONTINUE HERE look at how dom elemenets were added for wes version
+    // Consider if delete task should be in this component as well.
+  }
+
   componentDidUpdate() {
     const { lastCard, lastProperty, lastCaretPosition } = this.props;
     if(lastCard !== '' && (lastProperty.includes('task') || lastProperty.includes('cardName'))) {
@@ -78,13 +82,12 @@ class Card extends React.Component {
   render() {
     const {cardIndex, cardDetails, updateCard, deleteCard, updateLastState} = this.props;
     const divStyle = { backgroundColor: cardDetails.cardColor };
-    return(
+    return (
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
         <CardName
           name="cardName"
           cardDetails={cardDetails}
           handleInput={this.handleInput}
-          restoreCaretPosition={this.restoreCaretPosition}
         />
         <ul>
           {Object.keys(cardDetails.cardTasks).map(key => (
@@ -94,10 +97,18 @@ class Card extends React.Component {
               taskIndex={key}
               cardIndex={cardIndex}
               cardDetails={cardDetails}
-              handleInput={this.handleInput}
               updateCard={updateCard}
+              handleInput={this.handleInput}
             />
           ))}
+          <li>
+            <span role="button"
+              data-name="addTaskBtn"
+              onClick={this.addTask}>
+              <span>+</span>
+              <span>Add Task</span>
+            </span>
+          </li>
         </ul>
         <div className="cardToolBox">
           <ColorPicker

@@ -1,4 +1,5 @@
 import React from 'react';
+import update from 'immutability-helper';
 
 class CardTask extends React.Component {
 
@@ -6,19 +7,24 @@ class CardTask extends React.Component {
     const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
     const {classList, attributes} = e.currentTarget;
     const taskDetail = cardDetails.cardTasks[taskIndex];
-    const isChecked = attributes['aria-checked'].value === 'true';
-    if(isChecked) {
-      classList.remove('checked');
-      attributes['aria-checked'].value = 'false';
-      taskDetail.taskDone = attributes['aria-checked'].value;
-    } else {
-      classList.add('checked');
-      attributes['aria-checked'].value = 'true';
-      taskDetail.taskDone = attributes['aria-checked'].value;
-    }
-    const updatedCard = {
-      ...cardDetails
-    };
+    let isChecked = attributes['aria-checked'].value === 'true';
+    classList.toggle('checked');
+    isChecked = !isChecked;
+    attributes['aria-checked'].value = isChecked;
+    taskDetail.taskDone = isChecked;
+    const updatedCard = {...cardDetails};
+    updateCard(cardIndex, updatedCard);
+  };
+
+  // Move this to cards...? 20180510
+  deleteTask = () => {
+    const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
+    let updatedCard = {...cardDetails};
+    updatedCard = update(updatedCard, {
+      cardTasks: {
+        $unset: [taskIndex]
+      }
+    });
     updateCard(cardIndex, updatedCard);
   };
 
@@ -28,7 +34,7 @@ class CardTask extends React.Component {
     const {taskDone, taskName} = taskDetail;
     const taskIsDone = taskDone === 'true';
     if(taskIsDone) {
-      return(
+      return (
         <li>
           <div
             className="checked"
@@ -40,7 +46,12 @@ class CardTask extends React.Component {
             data-name={taskIndex}>
             {taskName}
           </span>
-        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
+          <span
+            data-name="delete"
+            role="button"
+            onClick={this.deleteTask}>
+            <i className="fas fa-times-circle"></i>
+          </span>
         </li>
       )
     } else {
@@ -57,7 +68,12 @@ class CardTask extends React.Component {
             onInput={handleInput}>
             {taskName}
           </span>
-        {/*CONTINUE HERE ADD A DELETE TASK BUTTON HERE...?*/}
+          <span
+            data-name="delete"
+            role="button"
+            onClick={this.deleteTask}>
+            <i className="fas fa-times-circle"></i>
+          </span>
         </li>
       )
     }
