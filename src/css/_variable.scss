@@ -1,9 +1,9 @@
-$box-shadow--default: 0 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24), 0 0 3px rgba(0,0,0,0.12);
+$box-shadow--default: 0 2px 2px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24), 0 0 1px rgba(0,0,0,0.12);
 $box-shadow--hover: 0 6px 6px rgba(0,0,0,0.08), 0 6px 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.08);
 $color--black: #000000;
 $color--darkgray: #333333;
 $color--lightgray: #cccccc;
-$color--gray: #777777;
+$color--gray: #8C8C8C;
 $color--white--transparent: rgba(255,255,255,0.95);
 $color--white: #FFFFFF;
 $color--main: #00A5D5;
@@ -11,7 +11,7 @@ $color--sub: #EED786;
 $color--accent: #EE86A8;
 $font--body: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font--header: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font--p: 1.6rem;                     // BODY TEXT
+$font--p: 1.4rem;                     // BODY TEXT
 $font--h1: calc(#{$font--p} * 3.32);  // PAGE BANNER
 $font--h2: calc(#{$font--p} * 2.46);  // PAGE MAIN HEADER
 $font--h3: calc(#{$font--p} * 1.83);  // PAGE SUB HEADER

@@ -55,26 +55,26 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h1 {
-  font-size: calc(1.6rem * 3.32); }
+  font-size: calc(1.4rem * 3.32); }
 
 h2 {
-  font-size: calc(1.6rem * 2.46); }
+  font-size: calc(1.4rem * 2.46); }
 
 h3 {
-  font-size: calc(1.6rem * 1.83); }
+  font-size: calc(1.4rem * 1.83); }
 
 h4 {
-  font-size: calc(1.6rem * 1.35); }
+  font-size: calc(1.4rem * 1.35); }
 
 h5 {
-  font-size: calc(1.6rem * 1.10);
+  font-size: calc(1.4rem * 1.10);
   font-weight: bolder; }
 
 h6 {
-  font-size: calc(1.6rem * 1.10); }
+  font-size: calc(1.4rem * 1.10); }
 
 p, a, li {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 a:visited, a:focus, a:active {
@@ -219,7 +219,7 @@ a:visited, a:focus, a:active {
   background-color: #FFFFFF;
   border-radius: calc(30px / 6);
   top: 60%;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.24), 0 0 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24), 0 0 1px rgba(0, 0, 0, 0.12);
   display: inline-block;
   left: -10px;
   padding: calc(30px / 6);
@@ -236,7 +236,7 @@ a:visited, a:focus, a:active {
   height: 30px;
   border-radius: 30px; }
   [class*=colorSwatch]:hover {
-    border: 2px solid #777777; }
+    border: 2px solid #8C8C8C; }
   [class*=colorSwatch] + [class*=colorSwatch] {
     margin-left: calc(30px / 8); }
 
@@ -266,10 +266,25 @@ header {
 h1 {
   text-align: center; }
 
+span[data-name="addTaskBtn"] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #8C8C8C; }
+  span[data-name="addTaskBtn"]:hover {
+    color: #333333; }
+  span[data-name="addTaskBtn"] span:first-child {
+    font-size: 2.4rem;
+    margin-right: 0.75rem;
+    width: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; }
+
 div[role="checkbox"] {
   align-items: center;
   border-radius: 0.35rem;
-  border: 1px solid #777777;
+  border: 1px solid #8C8C8C;
   display: inline-flex;
   flex: 0 0 1.6rem;
   height: 1.6rem;
@@ -328,11 +343,11 @@ li:hover span[data-name="delete"] {
 .cardContainer {
   background-color: #FFFFFF;
   border-radius: 0.25rem;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.24), 0 0 3px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24), 0 0 1px rgba(0, 0, 0, 0.12);
   flex: 1;
   margin: 1.25rem;
   max-width: 45%;
-  min-width: 240px;
+  min-width: 260px;
   padding: 1.25rem calc(1.25rem * 1.25); }
   .cardContainer h6 {
     font-family: 'Roboto Condensed',arial,sans-serif;
@@ -350,9 +365,9 @@ li:hover span[data-name="delete"] {
       margin-bottom: 0; }
 
 .cardToolBox {
-  border-top: 1px solid #777777;
-  color: #777777;
-  font-size: 1.6rem;
+  border-top: 1px dashed #a6a6a6;
+  color: #8C8C8C;
+  font-size: 1.4rem;
   padding-top: calc(1.25rem * 1.25);
   margin-top: calc(1.25rem * 1.25); }
   .cardToolBox > *:hover {

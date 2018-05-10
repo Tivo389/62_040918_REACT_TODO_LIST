@@ -1,4 +1,5 @@
 import React from 'react';
+import update from 'immutability-helper';
 
 class CardTask extends React.Component {
 
@@ -6,32 +7,25 @@ class CardTask extends React.Component {
     const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
     const {classList, attributes} = e.currentTarget;
     const taskDetail = cardDetails.cardTasks[taskIndex];
-    const isChecked = attributes['aria-checked'].value === 'true';
-    if(isChecked) {
-      classList.remove('checked');
-      attributes['aria-checked'].value = 'false';
-      taskDetail.taskDone = attributes['aria-checked'].value;
-    } else {
-      classList.add('checked');
-      attributes['aria-checked'].value = 'true';
-      taskDetail.taskDone = attributes['aria-checked'].value;
-    }
-    const updatedCard = {
-      ...cardDetails
-    };
+    let isChecked = attributes['aria-checked'].value === 'true';
+    classList.toggle('checked');
+    isChecked = !isChecked;
+    attributes['aria-checked'].value = isChecked;
+    taskDetail.taskDone = isChecked;
+    const updatedCard = {...cardDetails};
     updateCard(cardIndex, updatedCard);
   };
 
-  deleteTask = (e) => {
-    // CONTINUE HERE MIGHT BE BEST TO VISUALISE THIS PROJECt StrUCTRE ONCE
-    // const {taskIndex, cardDetails} = this.props;
-    // let updatedCard = {...cardDetails};
-    // console.log(updatedCard);
-    // updatedCard = update(updatedCard, {
-    //   cardTasks: {
-    //     [taskIndex]: null
-    //   }
-    // });
+  // Move this to cards...? 20180510
+  deleteTask = () => {
+    const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
+    let updatedCard = {...cardDetails};
+    updatedCard = update(updatedCard, {
+      cardTasks: {
+        $unset: [taskIndex]
+      }
+    });
+    updateCard(cardIndex, updatedCard);
   };
 
   render() {
