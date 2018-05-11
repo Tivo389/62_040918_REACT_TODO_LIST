@@ -16,7 +16,6 @@ class CardTask extends React.Component {
     updateCard(cardIndex, updatedCard);
   };
 
-  // Move this to cards...? 20180510
   deleteTask = () => {
     const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
     let updatedCard = {...cardDetails};

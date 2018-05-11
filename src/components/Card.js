@@ -55,26 +55,40 @@ class Card extends React.Component {
     return caretOffset;
   };
 
-  addTask = () => {
-    console.log('addTask ACTIVATED!');
-    // CONTINUE HERE look at how dom elemenets were added for wes version
-    // Consider if delete task should be in this component as well.
+  addTask = (e) => {
+    const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
+    const length = Object.keys(cardDetails.cardTasks).length;
+    const newTask = `task${length}${Date.now()}`;
+    let updatedCard = {...cardDetails};
+    updatedCard = update(updatedCard, {
+      cardTasks: {
+        $merge: {
+          [newTask]: { taskDone:"false", taskName:'' }
+        }
+      }
+    });
+    updateLastState(cardIndex, newTask);
+    updateCard(cardIndex, updatedCard);
   }
 
   componentDidUpdate() {
     const { lastCard, lastProperty, lastCaretPosition } = this.props;
-    if(lastCard !== '' && (lastProperty.includes('task') || lastProperty.includes('cardName'))) {
+    if( lastCard !== '' && (lastProperty.includes('task') || lastProperty.includes('cardName')) ) {
       const cardName = document.querySelector(`[data-name=${lastCard}]`);
       const cardProperty = cardName.querySelector(`[data-name=${lastProperty}]`);
-      const textNode = cardProperty.firstChild;
-      if(textNode != null) {
-        const caret = lastCaretPosition;
-        const range = document.createRange();
-        range.setStart(textNode, caret);
-        range.setEnd(textNode, caret);
-        const sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
+      if( cardProperty!= null ) {
+        const textNode = cardProperty.firstChild;
+        if( textNode === null ) {
+          cardProperty.focus(); // Add task => Focus on input
+        } else {
+          const caret = lastCaretPosition;
+          const range = document.createRange();
+          range.setStart(textNode, caret);
+          range.setEnd(textNode, caret);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
       }
     }
   }

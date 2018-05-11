@@ -258,29 +258,6 @@ a:visited, a:focus, a:active {
 .color6 {
   background-color: #FAFAFA; }
 
-header {
-  flex: 1 100%;
-  padding: 0 2rem;
-  margin-bottom: 6rem; }
-
-h1 {
-  text-align: center; }
-
-span[data-name="addTaskBtn"] {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: #8C8C8C; }
-  span[data-name="addTaskBtn"]:hover {
-    color: #333333; }
-  span[data-name="addTaskBtn"] span:first-child {
-    font-size: 2.4rem;
-    margin-right: 0.75rem;
-    width: 1.6rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center; }
-
 div[role="checkbox"] {
   align-items: center;
   border-radius: 0.35rem;
@@ -309,6 +286,14 @@ div[role="checkbox"].checked {
   div[role="checkbox"].checked + span {
     text-decoration: line-through; }
 
+header {
+  flex: 1 100%;
+  padding: 0 2rem;
+  margin-bottom: 6rem; }
+
+h1 {
+  text-align: center; }
+
 li span[data-name="delete"] {
   font-size: 1.8rem;
   visibility: hidden;
@@ -319,6 +304,40 @@ li:hover span[data-name="delete"] {
   opacity: 0.5; }
   li:hover span[data-name="delete"]:hover {
     opacity: 1; }
+
+span[contenteditable="true"]:focus {
+  outline: 0; }
+  span[contenteditable="true"]:focus::before, span[contenteditable="true"]:focus::after {
+    background-color: #cccccc;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    margin: -1px calc(1.25rem * -1.25);
+    position: absolute;
+    width: calc(100% + 1.25rem * 2.5); }
+  span[contenteditable="true"]:focus::before {
+    transform: translateY(-0.35em);
+    top: 0; }
+  span[contenteditable="true"]:focus::after {
+    transform: translateY(0.35em);
+    bottom: 0; }
+
+span[data-name="addTaskBtn"] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #8C8C8C; }
+  span[data-name="addTaskBtn"]:hover {
+    color: #333333; }
+  span[data-name="addTaskBtn"] span:first-child {
+    font-size: 2.4rem;
+    margin-right: 0.75rem;
+    margin-left: 0.1rem;
+    width: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; }
 
 .app {
   padding: 5vw;
@@ -357,8 +376,9 @@ li:hover span[data-name="delete"] {
     .cardContainer h6:focus {
       outline: 0; }
   .cardContainer li {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
+    position: relative;
     font-family: 'Roboto Slab', serif;
     margin-bottom: 0.75em; }
     .cardContainer li:last-child {
