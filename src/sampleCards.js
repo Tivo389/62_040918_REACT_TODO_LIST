@@ -9,7 +9,7 @@ const sampleCards = {
         taskDone: 'true'
       },
       task2: {
-        taskName: "Buy Flour",
+        taskName: "Buy\nFlour",
         taskDone: 'false'
       },
       task3: {
@@ -24,11 +24,11 @@ const sampleCards = {
     cardColor: "#a1dfff",
     cardTasks: {
       task1: {
-        taskName: "Harry Potter - Azkaban Prison Break - ",
+        taskName: "Harry Potter - Azkaban Prison Break -",
         taskDone: 'false'
       },
       task2: {
-        taskName: "Sunset - The end of the rising sun - ",
+        taskName: "Sunset - The end of the rising sun -",
         taskDone: 'true'
       }
     }

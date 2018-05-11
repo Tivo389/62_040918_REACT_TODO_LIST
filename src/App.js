@@ -10,6 +10,9 @@ class App extends React.Component {
     taskCards: {},
     lastCard: '',
     lastProperty: '',
+    // CONTINUE HERE CONVERT THE CARET POSITION TO AN ARRAY
+    // Store the node on input, not string...?
+    // get nodelist of contents, get indexof that current node and store that.
     lastCaretPosition: 0
   };
 
