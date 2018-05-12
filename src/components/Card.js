@@ -7,34 +7,41 @@ import ColorPicker from './ColorPicker';
 class Card extends React.Component {
 
   handleKeyDown = (e) => {
+    console.log('== handleKeyDown ==');
+    // const nodeBefore = Array.from(e.currentTarget.childNodes);
     const isEnter = e.key === 'Enter';
-    const isShift = e.shiftKey === true;
-    if(isEnter && isShift) {
-    } else if(isEnter) {
+    if(isEnter) {
       e.preventDefault();
       const firstHalf = e.currentTarget.innerHTML.slice(0, window.getSelection().anchorOffset);
       const secondHalf = e.currentTarget.innerHTML.slice(window.getSelection().anchorOffset, e.currentTarget.innerHTML.length);
       const caretAtStart = firstHalf.length === 0;
-      const caretInText = firstHalf.length > 0 && firstHalf.length < e.currentTarget.innerHTML.length;
+      const caretInText = firstHalf.length > 0 && firstHalf.length < e.currentTarget.textContent.length;
+      debugger;
+      // CONTINUE HERE
+      // Seems the first linebreak after end works. but second time round is considered a mid-text line-break...
+      // Check the caret at this point and see if there something odd....
       if(caretAtStart) {
         e.currentTarget.innerHTML = `<br>${firstHalf}${secondHalf}`;
+        e.currentTarget.insertAdjacentHTML('afterbegin', "\u00A0");
+        this.handleInput(e, 'start');
       } else if(caretInText) {
         e.currentTarget.innerHTML = `${firstHalf}<br>${secondHalf}`;
+        // ++++++++++ LATER
+        this.handleInput(e, 'mid');
       } else {
-        if(e.currentTarget.childNodes.length > 1) {
-          e.currentTarget.innerHTML = `${firstHalf}${secondHalf}<br>`;
-        } else {
-          e.currentTarget.innerHTML = `${firstHalf}${secondHalf}<br><br>`;
-        }
+        e.currentTarget.innerHTML = `${firstHalf}${secondHalf}<br>`;
+        e.currentTarget.insertAdjacentHTML('beforeend', "\u00A0");
+        this.handleInput(e, 'end');
       }
+      // const nodeAfter = Array.from(e.currentTarget.childNodes);
     }
-    this.handleInput(e);
   };
 
-  handleInput = (e) => {
+  handleInput = (e, lineBreakPos) => {
+    console.log('== handleInput ==');
     const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
     const property = e.currentTarget.dataset.name;
-    const caret = this.getCaretPos(e);
+    const caret = this.getCaretPos(e, lineBreakPos);
     let updatedCard = {...cardDetails};
     if(property.includes('task')) {
       // WITH IMMUTABILITY HELPER
@@ -58,19 +65,18 @@ class Card extends React.Component {
     updateCard(cardIndex, updatedCard);
   };
 
-  getCaretPos = (e) => {
+  getCaretPos = (e, lineBreakPos) => {
     const element = e.currentTarget;
     const allNodes = e.currentTarget.childNodes;
-    const caretOffset = [0,0];
     const currentNode = window.getSelection().anchorNode;
     const currentNodeIndex = Array.from(allNodes).indexOf(currentNode);
-    // CONTINUE HERE
-    // We need to return the correct caret position with line-breaks.
-    debugger;
-    // If its a normal input of text then do...
-    if(allNodes.length !== 0 && currentNodeIndex !== -1) {
-      const doc = element.ownerDocument || element.document;
-      const win = doc.defaultView || doc.parentWindow;
+    const caretOffset = [0,0];
+    const textInput = allNodes.length !== 0 && currentNodeIndex !== -1 && lineBreakPos === undefined;
+    const brInput = currentNode.nodeName === "SPAN" && lineBreakPos !== undefined;
+    const doc = element.ownerDocument || element.document;
+    const win = doc.defaultView || doc.parentWindow;
+    if(textInput) {
+      console.log('== TEXT INPUT ==');
       caretOffset[0] = currentNodeIndex;
       let sel;
       if (typeof win.getSelection !== "undefined") {
@@ -87,6 +93,18 @@ class Card extends React.Component {
         caretOffset[1] = preCaretTextRange.text.length;
       }
       return caretOffset;
+    } else if(brInput) {
+      console.log('== BR INPUT ==');
+      if(lineBreakPos === 'start') {
+        console.log('== / start ==');
+        return caretOffset;
+      } else if (lineBreakPos === 'end') {
+        console.log('== / end ==');
+        caretOffset[0] = e.currentTarget.childNodes.length - 1;
+        return caretOffset;
+      } else if (lineBreakPos === 'mid') {
+        console.log('== / mid ==');
+      }
     }
   };
 
@@ -107,6 +125,7 @@ class Card extends React.Component {
   };
 
   restoreTextAsHTML = (cardProperty, cardIndex, cardDetails, lastCaretPosition) => {
+    console.log('== restoreTextAsHTML ==');
     const targetCard = document.querySelector(`div[data-name=${cardIndex}]`);
     if( cardProperty.dataset.name.includes('task') ) {
       const tasksContainer = targetCard.querySelector('ul[data-name="cardTasks"]');
@@ -122,6 +141,8 @@ class Card extends React.Component {
   };
 
   restoreCaretPosition = (cardProperty, textNode, lastCaretPosition) => {
+    console.log('== restoreCaretPosition ==');
+    console.log(lastCaretPosition);
     if( textNode === null || textNode === undefined ) {
       cardProperty.focus(); // Add task => Focus on input
     } else {
