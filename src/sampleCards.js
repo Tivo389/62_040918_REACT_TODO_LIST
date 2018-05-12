@@ -9,7 +9,7 @@ const sampleCards = {
         taskDone: 'true'
       },
       task2: {
-        taskName: "Buy\nFlour",
+        taskName: "Buy Flour",
         taskDone: 'false'
       },
       task3: {

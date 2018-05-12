@@ -13,7 +13,7 @@ class App extends React.Component {
     // CONTINUE HERE CONVERT THE CARET POSITION TO AN ARRAY
     // Store the node on input, not string...?
     // get nodelist of contents, get indexof that current node and store that.
-    lastCaretPosition: 0
+    lastCaretPosition: [0,0]
   };
 
   loadSamples = () => {
@@ -21,7 +21,7 @@ class App extends React.Component {
       taskCards: sampleCards,
       lastCard: '',
       lastProperty: '',
-      lastCaretPosition: 0
+      lastCaretPosition: [0,0]
     });
   };
 
@@ -33,9 +33,9 @@ class App extends React.Component {
     });
   };
 
-  updateLastState = (card='', property='', caret=0) => {
+  updateLastState = (cardIndex='', property='', caret=[0,0]) => {
     this.setState({
-      lastCard: card,
+      lastCard: cardIndex,
       lastProperty: property,
       lastCaretPosition: caret
     });
