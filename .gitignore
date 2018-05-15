@@ -17,6 +17,7 @@
 .env.production.local
 *.sublime-project
 *.sublime-workspace
+00_POST_IT.txt
 
 npm-debug.log*
 yarn-debug.log*
