@@ -1,0 +1,31 @@
+=======================================================
+[ TEMP NOTES ]
+- Maybe refactor a bit first.
+- Also it might be worth splitting the restore caret function into its own project.
+- Wrap up this as a simple to-do list and focus on advanced functionality after the restore caret function.
+- Save caret files as a duplicate and the main files will be the simple?
+=======================================================
+[ HIGH-PRIORITY ]
+- Card.js
+  - C1T2 [0,3] => ENTER => Caret returns to [0,0]
+  - New Task => testest => [0,4] => ENTER => Caret returns to [0,0]
+  - C1T2 [0,9] => ENTER => Backspace => ENTER => No line break added => ENTER => Line break added to start
+  - New Task => Add 1 letter => Delete 1 letter => New Task => Deleted letter returns
+  - New Task => Make 4 new lines => Lines 1-3 Cannot add new lines
+  - Buy Flour => ENTER*3
+    nbsp <= Cannot add new line if caret is after nbsp
+    <br>
+    nbsp <= Cannot add new line if caret is after nbsp
+    <br>
+    nbsp <= CAN add new line
+    <br>
+
+  - Select All => BACKSPACE => Only deletes last letter
+
+  - CardName not setup for line-break
+=======================================================
+[ LOW-PRIORITY ]
+- CardTask.js
+  - Prevent checkbox from affecting sample
+=======================================================
+[ GENERAL NOTES ]

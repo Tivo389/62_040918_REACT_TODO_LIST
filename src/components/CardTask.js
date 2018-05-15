@@ -3,7 +3,6 @@ import update from 'immutability-helper';
 
 class CardTask extends React.Component {
 
-  // 999 FIX CHECKBOX AFFECTING SAMPLE
   handleCheckbox = (e) => {
     const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
     const {classList, attributes} = e.currentTarget;

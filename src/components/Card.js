@@ -133,13 +133,12 @@ class Card extends React.Component {
       } else if (lineBreakPos === 'caretAtEnd') {
         // console.log('== getCaretPos / BR INPUT / caretAtEnd ==');
         caretOffset[0] = ect.childNodes.length - 1;
-        return caretOffset;
       } else if (lineBreakPos === 'caretInStr') {
         // console.log('== getCaretPos / BR INPUT / caretInStr ==');
         caretOffset[0] = nodeCurrentIndex + 2;
         caretOffset[1] = 0;
-        return caretOffset;
       }
+      return caretOffset;
     }
   };
 
