@@ -9,69 +9,63 @@ class Card extends React.Component {
   handleKeyDown = (e) => {
     const isEnter = e.key === 'Enter';
     let caret = window.getSelection();
-    // IF YOU PRESSED ENTER
     if(isEnter) {
+      // ==================================================================================
       e.preventDefault();
       const nodeCurrent = caret.anchorNode;
       const nodeOffset = caret.anchorOffset;
-      let   nodeCurrentValue = nodeCurrent.nodeValue;
-      let   nodeIsNewBreak = nodeCurrent.nodeValue === " ";
-      // COUNTER NBSP && EMPTY LINE BREAK PREVENTION (There is probably a better way...)
-      // - I was unable to replicate what I saw on Google Keep. Looked like an 'EMPTY text node'?
-      if(nodeCurrent.length > 1  && nodeCurrentValue[nodeCurrentValue.length - 1] === " ") {
-        nodeCurrent.nodeValue = nodeCurrentValue.slice(0, nodeCurrentValue.length - 1);
-        nodeIsNewBreak = true;
-      } else if(nodeCurrent.nodeValue === null) return;
+      let   nodeCurrentVal = nodeCurrent.nodeValue;
+      let   nodeIsBreak = nodeCurrent.nodeValue === " ";
       const ect = e.currentTarget;
       const nodesAll = ect.childNodes;
-      const nodeCurrentIndex = Array.from(nodesAll).indexOf(nodeCurrent);
+      const nodeCIndex = Array.from(nodesAll).indexOf(nodeCurrent);
       const nodeOneOnly = nodesAll.length === 1;
-      const nodeIsFirst = nodeCurrentIndex === 0;
-      const nodeIsLast = nodesAll.length === (nodeCurrentIndex + 1);
+      const nodeIsFirst = nodeCIndex === 0;
+      const nodeIsLast = nodesAll.length === (nodeCIndex + 1);
       let   strFirstHalf = ect.innerHTML.slice(0, caret.anchorOffset);
       let   strSecondHalf = ect.innerHTML.slice(caret.anchorOffset, ect.innerHTML.length);
       const strCaretAtStart = caret.anchorOffset === 0;
       const strCaretAtEnd = caret.anchorOffset === nodeCurrent.length;
       const strCaretInStr = strCaretAtStart === false && strCaretAtEnd === false;
       let lineBreakPos;
+      // ==================================================================================
+      if(nodeCurrent.length > 1  && nodeCurrentVal[nodeCurrentVal.length - 1] === " ") {  // COUNTER NBSP && EMPTY LINE BREAK PREVENTION (There is probably a better way...) - I was unable to replicate what I saw on Google Keep. Looked like an 'EMPTY text node'?
+        nodeCurrent.nodeValue = nodeCurrentVal.slice(0, nodeCurrentVal.length - 1);
+        nodeIsBreak = true;
+      } else if(nodeCurrent.nodeValue === null) return;
+      // ==================================================================================
       if(nodeOneOnly) {
-        // AND IF THERE IS ONLY 1 NODE
         if(strCaretAtStart) {
-          // AND CARET IS AT START OF NODE
-          console.log('== handleKeyDown / ENTER / MONO / caretAtStart ==');
+          // console.log('== handleKeyDown / ENTER / MONO / caretAtStart ==');
           ect.insertAdjacentHTML('afterbegin', "\u00A0<br>");
           lineBreakPos = 'caretAtStart';
         } else if(strCaretAtEnd) {
-          // AND CARET IS AT END OF NODE
-          console.log('== handleKeyDown / ENTER / MONO / caretAtEnd ==');
+          // console.log('== handleKeyDown / ENTER / MONO / caretAtEnd ==');
           ect.insertAdjacentHTML('beforeend', "<br>\u00A0");
           lineBreakPos = 'caretAtEnd';
         } else if(strCaretInStr) {
-          // AND CARET IS MID-NODE
-          console.log('== handleKeyDown / ENTER / MONO / caretInStr ==');
+          // console.log('== handleKeyDown / ENTER / MONO / caretInStr ==');
           ect.innerHTML = `${strFirstHalf}<br>${strSecondHalf}`;
           lineBreakPos = 'caretInStr';
         }
         caret = this.getCaretPos(e, lineBreakPos);
         return this.handleInput(e,caret);
+      // ==================================================================================
       } else {
-        // AND IF THERE IS MORE THAN 1 NODE
+      // ==================================================================================
         if(nodeIsFirst && strCaretAtStart) {
-          // AND CARET IS AT START OF NODE
-          console.log('== handleKeyDown / ENTER / MULTI / caretAtStart ==');
+          // console.log('== handleKeyDown / ENTER / MULTI / caretAtStart ==');
           ect.insertAdjacentHTML('afterbegin', "\u00A0<br>");
           lineBreakPos = 'caretAtStart';
-        } else if( (nodeIsLast && strCaretAtEnd) || (nodeIsLast && nodeIsNewBreak) ) {
-          // AND CARET IS AT END OF NODE
-          console.log('== handleKeyDown / ENTER / MULTI / caretAtEnd ==');
+        } else if( (nodeIsLast && strCaretAtEnd) || (nodeIsLast && nodeIsBreak) ) {
+          // console.log('== handleKeyDown / ENTER / MULTI / caretAtEnd ==');
           ect.insertAdjacentHTML('beforeend', "<br>\u00A0");
           lineBreakPos = 'caretAtEnd';
         } else if(!nodeIsFirst && !strCaretAtEnd) {
-          // AND CARET IS MID-NODE
-          console.log('== handleKeyDown / ENTER / MULTI / caretInStr ==');
+          // console.log('== handleKeyDown / ENTER / MULTI / caretInStr ==');
           const nodesArray = [...nodesAll];
           const nodesFirstHalf = nodesArray
-            .splice(0,nodeCurrentIndex)
+            .splice(0,nodeCIndex)
             .reduce((accumulator,element) => {
               const isStr = element.textContent !== "";
               return isStr ? accumulator += element.textContent : accumulator += element.outerHTML;
@@ -87,18 +81,20 @@ class Card extends React.Component {
           ect.innerHTML = `${nodesFirstHalf}${strFirstHalf}<br>${strSecondHalf}${nodesSecondHalf}`;
           lineBreakPos = 'caretInStr';
         }
-        caret = this.getCaretPos(e, lineBreakPos, nodeCurrentIndex, nodeOffset);
+        caret = this.getCaretPos(e, lineBreakPos, nodeCIndex, nodeOffset);
         return this.handleInput(e,caret);
+      // ==================================================================================
       }
     }
+    // ==================================================================================
     // IF YOU PRESSED A KEY OTHER THAN ENTER
     caret = this.getCaretPos(e);
-    console.log(caret);
     this.handleInput(e,caret);
+    // ==================================================================================
   };
 
 
-  getCaretPos = (e, lineBreakPos, nodeCurrentIndex, nodeOffset) => {
+  getCaretPos = (e, lineBreakPos, nodeCIndex, nodeOffset) => {
     const ect = e.currentTarget;
     const allNodes = ect.childNodes;
     const currentNode = window.getSelection().anchorNode;
@@ -135,14 +131,12 @@ class Card extends React.Component {
         caretOffset[0] = ect.childNodes.length - 1;
       } else if (lineBreakPos === 'caretInStr') {
         // console.log('== getCaretPos / BR INPUT / caretInStr ==');
-        caretOffset[0] = nodeCurrentIndex + 2;
+        caretOffset[0] = nodeCIndex + 2;
         caretOffset[1] = 0;
       }
       return caretOffset;
     }
   };
-
-
 
   handleInput = (e, caret) => {
     // console.log('== handleInput ==');
@@ -172,8 +166,6 @@ class Card extends React.Component {
     updateCard(cardIndex, updatedCard);
   };
 
-
-
   addTask = (e) => {
     const {cardIndex, cardDetails, updateCard, updateLastState} = this.props;
     const length = Object.keys(cardDetails.cardTasks).length;
@@ -189,8 +181,6 @@ class Card extends React.Component {
     updateLastState(cardIndex, newTask);
     updateCard(cardIndex, updatedCard);
   };
-
-
 
   restoreTextAsHTML = (cardProperty, cardIndex, cardDetails, lastCaretPosition) => {
     // console.log('== restoreTextAsHTML ==');
@@ -209,8 +199,6 @@ class Card extends React.Component {
     }
   };
 
-
-
   restoreCaretPosition = (cardProperty, textNode, lastCaretPosition) => {
     // console.log('== restoreCaretPosition ==');
     // console.log(lastCaretPosition);
@@ -225,8 +213,6 @@ class Card extends React.Component {
       sel.addRange(range);
     }
   };
-
-
 
   componentDidUpdate(e) {
     const { cardIndex, cardDetails, lastCard, lastProperty, lastCaretPosition } = this.props;
