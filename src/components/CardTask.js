@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 
 class CardTask extends React.Component {
 
+  // 999 FIX CHECKBOX AFFECTING SAMPLE
   handleCheckbox = (e) => {
     const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
     const {classList, attributes} = e.currentTarget;
@@ -28,13 +29,13 @@ class CardTask extends React.Component {
   };
 
   render() {
-    const {cardDetails, taskIndex, handleInput} = this.props;
+    const {cardDetails, taskIndex, handleKeyDown, handleInput} = this.props;
     const taskDetail = cardDetails.cardTasks[taskIndex];
     const {taskDone, taskName} = taskDetail;
     const taskIsDone = taskDone === 'true';
     if(taskIsDone) {
       return (
-        <li>
+        <li data-name="cardTasks">
           <div
             className="checked"
             role="checkbox"
@@ -55,7 +56,7 @@ class CardTask extends React.Component {
       )
     } else {
       return(
-        <li>
+        <li data-name="cardTasks">
           <div
             role="checkbox"
             onClick={this.handleCheckbox}
@@ -64,6 +65,7 @@ class CardTask extends React.Component {
           <span
             data-name={taskIndex}
             contentEditable="true"
+            onKeyDown={handleKeyDown}
             onInput={handleInput}>
             {taskName}
           </span>
