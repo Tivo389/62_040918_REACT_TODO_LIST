@@ -145,6 +145,7 @@ span[data-name="addTaskBtn"] {
     text-transform: uppercase;
     margin-bottom: $cardSpacer;
     letter-spacing: 0.05rem;
+    white-space: pre-wrap;
     &:focus {
       outline: 0;
     }

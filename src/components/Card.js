@@ -9,18 +9,23 @@ class Card extends React.Component {
   handleInput = (e) => {
     const {cardIndex, cardDetails, updateState} = this.props;
     const caretPosition = this.getCaretPos(e);
-    const property = e.currentTarget.dataset.name;
+    const propertyMain = e.currentTarget.dataset.name;
+    const propertySub = e.currentTarget.dataset.type;
     let updatedCard = {...cardDetails};
-    if(property.includes('task')) {
-      updatedCard = update(updatedCard, {                   //01. Update 'updatedCard's...
-        cardTasks: {                                        //02. 'cardTasks'...
-          [property]: {                                     //03. property = current 'task'
-            $merge: { taskText:e.currentTarget.innerText }  //04. Merge this object with the data-structure
+    if (propertySub === 'taskText') {
+      updatedCard = update(updatedCard, {                         //01. Update 'updatedCard's...
+        cardTasks: {                                              //02. 'cardTasks'...
+          [propertyMain]: {                                       //03. propertyMain = current 'task'
+            $merge: { [propertySub]: e.currentTarget.innerText }  //04. Merge this object with the data-structure
           }
         }
       });
+    } else if (propertyMain === 'cardName' && propertySub === 'cardName') {
+      updatedCard = update(updatedCard, {
+        $merge: { [propertyMain]: e.currentTarget.innerText }
+      });
     }
-    updateState(updatedCard, cardIndex, property, caretPosition);
+    updateState(updatedCard, cardIndex, propertyMain, caretPosition);
   };
 
   getCaretPos = (e) => {
@@ -61,7 +66,11 @@ class Card extends React.Component {
     if (lastCardExists && sameAsLastCard && isInput) {
       const cardName = document.querySelector(`[data-name=${lastCard}]`);
       const cardProperty = cardName.querySelector(`[data-name=${lastProperty}]`);
-      if (cardProperty.firstChild === null) { return cardProperty.focus() };
+      if (cardProperty === null) {
+        return;
+      } else if (cardProperty.firstChild === null) {
+        return cardProperty.focus();
+      }
       this.restoreCaretPosition(cardProperty, lastCaretPosition);
     }
   }

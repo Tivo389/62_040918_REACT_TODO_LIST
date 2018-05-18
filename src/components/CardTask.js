@@ -45,7 +45,9 @@ class CardTask extends React.Component {
             aria-checked={taskDone}>
           </div>
           <span
-            data-name={taskIndex}>
+            data-name={taskIndex}
+            data-type="taskText"
+            >
             {taskText}
           </span>
           <span
@@ -66,6 +68,7 @@ class CardTask extends React.Component {
           </div>
           <span
             data-name={taskIndex}
+            data-type="taskText"
             contentEditable="true"
             onKeyDown={handleKeyDown}
             onInput={handleInput}>
