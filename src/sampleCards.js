@@ -1,34 +1,46 @@
 const sampleCards = {
 
   card1: {
-    cardName: "Shopping List",
-    cardColor: "#F9F983",
+    cardName: 'Shopping List',
+    cardColor: '#F9F983',
     cardTasks: {
       task1: {
-        taskName: "Buy Milk",
+        taskText: [
+          ['Buy Milk']
+        ],
         taskDone: 'true'
       },
       task2: {
-        taskName: "Buy Flour",
+        taskText: [
+          ['Buy Flour']
+        ],
         taskDone: 'false'
       },
       task3: {
-        taskName: "Buy Eggs",
+        taskText: [
+          ['Buy Eggs']
+        ],
         taskDone: 'true'
       }
     }
   },
 
   card2: {
-    cardName: "Read Books",
-    cardColor: "#a1dfff",
+    cardName: 'Read Books',
+    cardColor: '#a1dfff',
     cardTasks: {
       task1: {
-        taskName: "Harry Potter - Azkaban Prison Break -",
+        taskText: [
+          ['Harry Potter'],
+          ['- Escape from Azkaban -']
+        ],
         taskDone: 'false'
       },
       task2: {
-        taskName: "Sunset - The end of the rising sun -",
+        taskText: [
+          ['Sunset'],
+          ['- Fall of the Sun -']
+        ],
         taskDone: 'true'
       }
     }

@@ -21,6 +21,9 @@ div[role="checkbox"] {
   }
   + span {
     width: 100%;
+    div {
+      white-space: pre-wrap;
+    }
   }
 }
 

@@ -22,19 +22,14 @@ class App extends React.Component {
     });
   };
 
-  updateCard = (cardIndex, updatedCard) => {
+  updateState = (updatedCard, cardIndex='', property='', caretPosition=[0,0]) => {
     const taskCards = {...this.state.taskCards}
     taskCards[cardIndex] = updatedCard;
     this.setState({
-      taskCards: taskCards
-    });
-  };
-
-  updateLastState = (cardIndex='', property='', caret=[0,0]) => {
-    this.setState({
+      taskCards: taskCards,
       lastCard: cardIndex,
       lastProperty: property,
-      lastCaretPosition: caret
+      lastCaretPosition: caretPosition
     });
   };
 
@@ -62,7 +57,7 @@ class App extends React.Component {
               lastProperty={this.state.lastProperty}
               lastCaretPosition={this.state.lastCaretPosition}
               updateCard={this.updateCard}
-              updateLastState={this.updateLastState}
+              updateState={this.updateState}
               deleteCard={this.deleteCard}
             />
           ))}

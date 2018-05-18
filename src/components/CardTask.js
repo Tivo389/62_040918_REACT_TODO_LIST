@@ -30,7 +30,7 @@ class CardTask extends React.Component {
   render() {
     const {cardDetails, taskIndex, handleKeyDown, handleInput} = this.props;
     const taskDetail = cardDetails.cardTasks[taskIndex];
-    const {taskDone, taskName} = taskDetail;
+    const {taskDone, taskText} = taskDetail;
     const taskIsDone = taskDone === 'true';
     if(taskIsDone) {
       return (
@@ -43,7 +43,7 @@ class CardTask extends React.Component {
           </div>
           <span
             data-name={taskIndex}>
-            {taskName}
+            <div>{taskText}</div>
           </span>
           <span
             data-name="delete"
@@ -66,7 +66,7 @@ class CardTask extends React.Component {
             contentEditable="true"
             onKeyDown={handleKeyDown}
             onInput={handleInput}>
-            {taskName}
+            <div>{taskText}</div>
           </span>
           <span
             data-name="delete"
