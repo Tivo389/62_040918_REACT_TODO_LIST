@@ -1,5 +1,7 @@
 import React from 'react';
+import update from 'immutability-helper';
 import { hot } from 'react-hot-loader'
+import defaultCards from './defaultCards';
 import sampleCards from './sampleCards';
 import AppHeader from './components/AppHeader';
 import Card from './components/Card';
@@ -16,6 +18,15 @@ class App extends React.Component {
   loadSamples = () => {
     this.setState({
       taskCards: sampleCards,
+      lastCard: '',
+      lastProperty: '',
+      lastCaretPosition: 0
+    });
+  };
+
+  loadDefault = () => {
+    this.setState({
+      taskCards: defaultCards,
       lastCard: '',
       lastProperty: '',
       lastCaretPosition: 0
@@ -42,12 +53,46 @@ class App extends React.Component {
     });
   };
 
+  addCard = () => {
+    const newCard = `card${Date.now()}`;
+    const colors = ['#F9F9A2','#CCEFFF','#FFBFCE','#D7FFBF','#EDBFFF','#FAFAFA'];
+    const randomColor = () => {
+      return colors[Math.floor(Math.random() * colors.length)];
+    };
+    let taskCards = {...this.state.taskCards};
+    taskCards = update(taskCards, {
+      $merge: {
+        [newCard]: {
+          cardName: "",
+          cardColor: [randomColor()],
+          cardTasks: {}
+        }
+      }
+    });
+    this.setState({
+      taskCards: taskCards
+    });
+  }
+
+  componentWillMount() {
+    this.loadDefault();
+  }
+
   render() {
     return (
       <div className="app">
-        <AppHeader text="React Todo List"/>
+        <AppHeader text="React Notes"/>
+        <div className="sampleBtnWrapper">
+          <div className="btn" onClick={this.loadSamples}>
+            <i className="fas fa-flask"></i>
+            Load Samples
+          </div>
+          <div className="btn" onClick={this.addCard}>
+            <i className="fas fa-plus-square addNote"></i>
+            Add Note
+          </div>
+        </div>
         <div className="cardWrapper">
-
           {Object.keys(this.state.taskCards).map(key => (
             <Card
               key={key}
@@ -60,13 +105,6 @@ class App extends React.Component {
               deleteCard={this.deleteCard}
             />
           ))}
-
-          <div className="sampleBtnWrapper">
-            <div className="btn" onClick={this.loadSamples}>
-              Load Sample
-            </div>
-          </div>
-
         </div>
       </div>
     );

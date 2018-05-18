@@ -15,6 +15,10 @@ const sampleCards = {
       task3: {
         taskText: "Buy Eggs",
         taskDone: 'true'
+      },
+      task4: {
+        taskText: "Buy Bacon",
+        taskDone: 'false'
       }
     }
   },
@@ -24,11 +28,11 @@ const sampleCards = {
     cardColor: "#CCEFFF",
     cardTasks: {
       task1: {
-        taskText: "Harry Potter\n- Azkaban Prison Break -",
+        taskText: "Harry Potter\n- Escape from Azkaban -",
         taskDone: 'false'
       },
       task2: {
-        taskText: "Sunset\n- The end of the rising sun -",
+        taskText: "How Hard Could It Be\n- Things not to say -",
         taskDone: 'true'
       }
     }
