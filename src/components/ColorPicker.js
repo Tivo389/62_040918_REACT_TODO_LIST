@@ -1,18 +1,18 @@
 import React from 'react';
+import update from 'immutability-helper';
 
 class ColorPicker extends React.Component {
 
   changeColor = (e) => {
-    const {name, cardIndex, cardDetails, updateCard, updateLastState} = this.props;
+    const {cardIndex, cardDetails, updateState} = this.props;
     const selectedColor = window.getComputedStyle(e.currentTarget,null)['background-color'];
     const targetCard = document.querySelector(`[data-name="${cardIndex}"]`);
     targetCard.style.backgroundColor = selectedColor;
-    cardDetails[name] = selectedColor;
-    const updatedCard = {
-      ...cardDetails
-    }
-    updateLastState();
-    updateCard(cardIndex, updatedCard);
+    let updatedCard = {...cardDetails};
+    updatedCard = update(updatedCard, {
+      $merge: { cardColor: selectedColor }
+    });
+    updateState(updatedCard, cardIndex);
   };
 
   render() {

@@ -4,33 +4,36 @@ import update from 'immutability-helper';
 class CardTask extends React.Component {
 
   handleCheckbox = (e) => {
-    const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
+    const {cardDetails, taskIndex, cardIndex, updateState} = this.props;
     const {classList, attributes} = e.currentTarget;
-    const taskDetail = cardDetails.cardTasks[taskIndex];
     let isChecked = attributes['aria-checked'].value === 'true';
+    let updatedCard = {...cardDetails};
     classList.toggle('checked');
     isChecked = !isChecked;
     attributes['aria-checked'].value = isChecked;
-    taskDetail.taskDone = isChecked;
-    const updatedCard = {...cardDetails};
-    updateCard(cardIndex, updatedCard);
+    updatedCard = update(updatedCard, {
+      cardTasks: {
+        [taskIndex]: {
+          $merge: { taskDone: String(isChecked) }
+        }
+      }
+    });
+    updateState(updatedCard, cardIndex);
   };
 
   deleteTask = () => {
-    const {cardDetails, taskIndex, cardIndex, updateCard} = this.props;
+    const {cardDetails, taskIndex, cardIndex, updateState} = this.props;
     let updatedCard = {...cardDetails};
     updatedCard = update(updatedCard, {
-      cardTasks: {
-        $unset: [taskIndex]
-      }
+      cardTasks: { $unset: [taskIndex] }
     });
-    updateCard(cardIndex, updatedCard);
+    updateState(updatedCard, cardIndex);
   };
 
   render() {
     const {cardDetails, taskIndex, handleKeyDown, handleInput} = this.props;
     const taskDetail = cardDetails.cardTasks[taskIndex];
-    const {taskDone, taskName} = taskDetail;
+    const {taskDone, taskText} = taskDetail;
     const taskIsDone = taskDone === 'true';
     if(taskIsDone) {
       return (
@@ -43,7 +46,7 @@ class CardTask extends React.Component {
           </div>
           <span
             data-name={taskIndex}>
-            {taskName}
+            {taskText}
           </span>
           <span
             data-name="delete"
@@ -66,7 +69,7 @@ class CardTask extends React.Component {
             contentEditable="true"
             onKeyDown={handleKeyDown}
             onInput={handleInput}>
-            {taskName}
+            {taskText}
           </span>
           <span
             data-name="delete"
