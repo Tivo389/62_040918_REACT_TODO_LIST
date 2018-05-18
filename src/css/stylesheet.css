@@ -373,7 +373,8 @@ span[data-name="addTaskBtn"] {
     font-family: 'Roboto Condensed',arial,sans-serif;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
-    letter-spacing: 0.05rem; }
+    letter-spacing: 0.05rem;
+    white-space: pre-wrap; }
     .cardContainer h6:focus {
       outline: 0; }
   .cardContainer li {
