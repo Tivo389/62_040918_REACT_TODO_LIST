@@ -10,7 +10,7 @@ class App extends React.Component {
     taskCards: {},
     lastCard: '',
     lastProperty: '',
-    lastCaretPosition: [0,0]
+    lastCaretPosition: 0
   };
 
   loadSamples = () => {
@@ -18,11 +18,11 @@ class App extends React.Component {
       taskCards: sampleCards,
       lastCard: '',
       lastProperty: '',
-      lastCaretPosition: [0,0]
+      lastCaretPosition: 0
     });
   };
 
-  updateState = (updatedCard, cardIndex='', property='', caretPosition=[0,0]) => {
+  updateState = (updatedCard, cardIndex='', property='', caretPosition=0) => {
     const taskCards = {...this.state.taskCards}
     taskCards[cardIndex] = updatedCard;
     this.setState({
@@ -56,7 +56,6 @@ class App extends React.Component {
               lastCard={this.state.lastCard}
               lastProperty={this.state.lastProperty}
               lastCaretPosition={this.state.lastCaretPosition}
-              updateCard={this.updateCard}
               updateState={this.updateState}
               deleteCard={this.deleteCard}
             />

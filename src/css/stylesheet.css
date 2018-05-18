@@ -241,19 +241,19 @@ a:visited, a:focus, a:active {
     margin-left: calc(30px / 8); }
 
 .color1 {
-  background-color: #F9F983; }
+  background-color: #F9F9A2; }
 
 .color2 {
-  background-color: #a1dfff; }
+  background-color: #CCEFFF; }
 
 .color3 {
-  background-color: #FF8DA7; }
+  background-color: #FFBFCE; }
 
 .color4 {
-  background-color: #B6FF8D; }
+  background-color: #D7FFBF; }
 
 .color5 {
-  background-color: #DE8DFF; }
+  background-color: #EDBFFF; }
 
 .color6 {
   background-color: #FAFAFA; }
@@ -270,9 +270,8 @@ div[role="checkbox"] {
   div[role="checkbox"]:hover {
     border: 1px solid #333333; }
   div[role="checkbox"] + span {
-    width: 100%; }
-    div[role="checkbox"] + span div {
-      white-space: pre-wrap; }
+    width: 100%;
+    white-space: pre-wrap; }
 
 div[role="checkbox"].checked {
   border: 1px solid #333333;
