@@ -28,22 +28,57 @@ class Card extends React.Component {
     updateState(updatedCard, cardIndex, propertyMain, caretPosition);
   };
 
+  handleKeyDown = (e) => {
+    if(e.key === 'Enter') {
+      e.preventDefault();
+      const taskIndex = e.currentTarget.dataset.name;
+      this.addTask(e, taskIndex);
+    } else {
+      return;
+    }
+  };
+
   getCaretPos = (e) => {
     const allNodes = e.currentTarget.childNodes;
     if (allNodes.length > 1) { return allNodes[0].length + 1 }
     return window.getSelection().anchorOffset;
   };
 
-  addTask = (e) => {
+  addTask = (e, taskIndex) => {
     const {cardIndex, cardDetails, updateState} = this.props;
     const length = Object.keys(cardDetails.cardTasks).length;
-    const newTask = `task${length}${Date.now()}`;
     let updatedCard = {...cardDetails};
+    let newTask;
+    if(taskIndex) {
+      // If there is a taskIndex. The enter key was pressed.
+      newTask = `${taskIndex}${Date.now()}`;
+    } else {
+      // If I added it manually, taskIndex is undefined.
+      newTask = `task${length}${Date.now()}`;
+    }
+    // Merge the newTask-key with object-value to the duplicated card.
     updatedCard = update(updatedCard, {
       cardTasks: {
         $merge: {
-          [newTask]: { taskDone:"false", taskText:'' }
+          [newTask]: { taskText:'', taskDone:"false" }
         }
+      }
+    });
+    // Sort the cardTasks-object based on their key
+    const orderedTasks = {};
+    let newTaskSorted = false;
+    Object.keys(updatedCard.cardTasks).sort().forEach((key,i) => {
+      // When you are handling the newTask, update it's value so the integer is clean.
+      if(!newTaskSorted && (key === newTask)) {
+        newTask = `task${i}`;
+        newTaskSorted = !newTaskSorted;
+      }
+      orderedTasks[`task${i}`] = updatedCard.cardTasks[key];
+    });
+    // Merge the sorted-cardTasks-Object to the duplicated card.
+    updatedCard = update(updatedCard, {
+      $merge: {
+        cardTasks: orderedTasks
       }
     });
     updateState(updatedCard, cardIndex, newTask);
@@ -94,6 +129,7 @@ class Card extends React.Component {
               cardIndex={cardIndex}
               cardDetails={cardDetails}
               updateState={updateState}
+              handleKeyDown={this.handleKeyDown}
               handleInput={this.handleInput}
             />
           ))}

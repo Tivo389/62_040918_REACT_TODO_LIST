@@ -42,18 +42,17 @@ class CardTask extends React.Component {
             className="checked"
             role="checkbox"
             onClick={this.handleCheckbox}
-            aria-checked={taskDone}>
+            aria-checked={taskDone} >
           </div>
           <span
             data-name={taskIndex}
-            data-type="taskText"
-            >
+            data-type="taskText" >
             {taskText}
           </span>
           <span
             data-name="delete"
             role="button"
-            onClick={this.deleteTask}>
+            onClick={this.deleteTask} >
             <i className="fas fa-times-circle"></i>
           </span>
         </li>
@@ -64,20 +63,20 @@ class CardTask extends React.Component {
           <div
             role="checkbox"
             onClick={this.handleCheckbox}
-            aria-checked={taskDone}>
+            aria-checked={taskDone} >
           </div>
           <span
             data-name={taskIndex}
             data-type="taskText"
             contentEditable="true"
             onKeyDown={handleKeyDown}
-            onInput={handleInput}>
+            onInput={handleInput} >
             {taskText}
           </span>
           <span
             data-name="delete"
             role="button"
-            onClick={this.deleteTask}>
+            onClick={this.deleteTask} >
             <i className="fas fa-times-circle"></i>
           </span>
         </li>
