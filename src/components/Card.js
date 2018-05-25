@@ -1,10 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import update from 'immutability-helper';
 import CardTask from './CardTask';
 import CardName from './CardName';
 import ColorPicker from './ColorPicker';
 
 class Card extends React.Component {
+
+  static propTypes = {
+    cardIndex: PropTypes.string,
+    cardDetails: PropTypes.shape({
+      cardName: PropTypes.string,
+      cardColor: PropTypes.string,
+      cardTasks: PropTypes.shape({
+        task: PropTypes.shape({
+          taskText: PropTypes.string,
+          taskDone: PropTypes.string
+        })
+      })
+    }),
+    lastCard: PropTypes.string,
+    lastProperty: PropTypes.string,
+    lastCaretPosition: PropTypes.number,
+    updateState: PropTypes.func,
+    deleteCard: PropTypes.func
+  };
 
   handleInput = (e) => {
     const {cardIndex, cardDetails, updateState} = this.props;

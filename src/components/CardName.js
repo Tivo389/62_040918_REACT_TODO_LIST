@@ -1,6 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CardName extends React.Component {
+
+  static propTypes = {
+    name: PropTypes.string,
+    cardDetails: PropTypes.shape({
+      cardName: PropTypes.string,
+      cardColor: PropTypes.string,
+      cardTasks: PropTypes.shape({
+        task: PropTypes.shape({
+          taskText: PropTypes.string,
+          taskDone: PropTypes.string
+        })
+      })
+    }),
+    handleInput: PropTypes.func
+  };
 
   render() {
     return(
