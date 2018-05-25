@@ -1,7 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import update from 'immutability-helper';
 
 class CardTask extends React.Component {
+
+  static propTypes = {
+    name: PropTypes.string,
+    taskIndex: PropTypes.string,
+    cardIndex: PropTypes.string,
+    cardDetails: PropTypes.shape({
+      cardName: PropTypes.string,
+      cardColor: PropTypes.string,
+      cardTasks: PropTypes.shape({
+        task: PropTypes.shape({
+          taskText: PropTypes.string,
+          taskDone: PropTypes.string
+        })
+      })
+    }),
+    updateState: PropTypes.func,
+    handleKeyDown: PropTypes.func,
+    handleInput: PropTypes.func
+  };
 
   handleCheckbox = (e) => {
     const {cardDetails, taskIndex, cardIndex, updateState} = this.props;

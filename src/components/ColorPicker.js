@@ -1,7 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import update from 'immutability-helper';
 
 class ColorPicker extends React.Component {
+
+  static propTypes = {
+    name: PropTypes.string,
+    cardIndex: PropTypes.string,
+    cardDetails: PropTypes.shape({
+      cardName: PropTypes.string,
+      cardColor: PropTypes.string,
+      cardTasks: PropTypes.shape({
+        task: PropTypes.shape({
+          taskText: PropTypes.string,
+          taskDone: PropTypes.string
+        })
+      })
+    }),
+    updateState: PropTypes.func
+  };
 
   changeColor = (e) => {
     const {cardIndex, cardDetails, updateState} = this.props;
