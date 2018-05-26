@@ -44,9 +44,16 @@ class CardTask extends React.Component {
   deleteTask = () => {
     const {cardDetails, taskIndex, cardIndex, updateState} = this.props;
     let updatedCard = {...cardDetails};
+    // START / PRE-FIREBASE IMPLEMENTATION
+    // updatedCard = update(updatedCard, {
+    //   cardTasks: { $unset: [taskIndex] }
+    // });
+    // END / PRE-FIREBASE IMPLEMENTATION
+    // START / POST-FIREBASE IMPLEMENTATION
     updatedCard = update(updatedCard, {
-      cardTasks: { $unset: [taskIndex] }
+      cardTasks: { $merge: { [taskIndex]: null } }
     });
+    // END / POST-FIREBASE IMPLEMENTATION
     updateState(updatedCard, cardIndex);
   };
 

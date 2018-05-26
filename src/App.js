@@ -1,10 +1,11 @@
 import React from 'react';
 import update from 'immutability-helper';
 import { hot } from 'react-hot-loader'
-import defaultCards from './defaultCards';
+// import defaultCards from './defaultCards';
 import sampleCards from './sampleCards';
 import AppHeader from './components/AppHeader';
 import Card from './components/Card';
+import base from  './base';
 
 class App extends React.Component {
 
@@ -24,14 +25,15 @@ class App extends React.Component {
     });
   };
 
-  loadDefault = () => {
-    this.setState({
-      taskCards: defaultCards,
-      lastCard: '',
-      lastProperty: '',
-      lastCaretPosition: 0
-    });
-  };
+  // Was conflicting with firebase, so commented out.
+  // loadDefault = () => {
+  //   this.setState({
+  //     taskCards: defaultCards,
+  //     lastCard: '',
+  //     lastProperty: '',
+  //     lastCaretPosition: 0
+  //   });
+  // };
 
   updateState = (updatedCard, cardIndex='', property='', caretPosition=0) => {
     const taskCards = {...this.state.taskCards}
@@ -46,8 +48,12 @@ class App extends React.Component {
 
   deleteCard = (cardIndex) => {
     const taskCards = {...this.state.taskCards};
-    delete taskCards[cardIndex];
-    // taskCards[cardIndex] = null; // If you want to update Firebase the value must be null.
+    // START / PRE-FIREBASE IMPLEMENTATION
+    // delete taskCards[cardIndex];
+    // END / PRE-FIREBASE IMPLEMENTATION
+    // START / POST-FIREBASE IMPLEMENTATION
+    taskCards[cardIndex] = null;
+    // END / POST-FIREBASE IMPLEMENTATION
     this.setState({
       taskCards: taskCards
     });
@@ -64,8 +70,13 @@ class App extends React.Component {
       $merge: {
         [newCard]: {
           cardName: "",
-          cardColor: [randomColor()],
-          cardTasks: {}
+          cardColor: randomColor(),
+          cardTasks: {
+            task1: {
+              taskText: "",
+              taskDone: 'false'
+            }
+          }
         }
       }
     });
@@ -74,8 +85,16 @@ class App extends React.Component {
     });
   }
 
-  componentWillMount() {
-    this.loadDefault();
+  componentDidMount() {
+    this.ref = base.syncState(`${this.props.match.params.noteID}`, {
+      context: this,
+      state: 'taskCards'
+    });
+    debugger;
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   render() {

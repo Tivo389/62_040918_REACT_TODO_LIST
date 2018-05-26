@@ -17,10 +17,9 @@ class StartPage extends React.Component {
 
   render() {
     return(
-      <form action="" className="nodeID" onSubmit={this.goToNote} >
-        <h2>Please Enter A Store</h2>
+      <form action="" className="nodeID" onSubmit={this.goToNote}>
         <input type="text" placeholder="Note ID Number" defaultValue={Date.now()} ref={this.myInput} required />
-        <button type="submit">Visit Store →</button>
+        <button type="submit">Make A List</button>
       </form>
     )
   }
