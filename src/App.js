@@ -85,14 +85,32 @@ class App extends React.Component {
     });
   }
 
+  // RUNS DURING ONLY THE FIRST RENDER && AFTER COMPONENT IS RENDERED
   componentDidMount() {
-    this.ref = base.syncState(`${this.props.match.params.noteID}`, {
-      context: this,
-      state: 'taskCards'
-    });
-    debugger;
+    const { params } = this.props.match;
+    const localStorageRef = localStorage.getItem(params.noteID);
+    // After initial-render check if there is data in the localStorage.
+    if(localStorageRef) {
+      this.setState({
+        taskCards: JSON.parse(localStorageRef)
+      });
+    } else {
+      this.ref = base.syncState(`${params.noteID}`, {
+        context: this,
+        state: 'taskCards'
+      });
+    }
   }
 
+  // RUNS AFTER COMPONENT IS RENDERED
+  componentDidUpdate() {
+    localStorage.setItem(
+      this.props.match.params.noteID,
+      JSON.stringify(this.state.taskCards)
+    );
+  }
+
+  // RUNS WHEN COMPONENT IS REMOVED FROM DOM
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
