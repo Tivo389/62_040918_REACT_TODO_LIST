@@ -3,7 +3,12 @@ const defaultCards = {
   card1: {
     cardName: "",
     cardColor: "#F9F9A2",
-    cardTasks: {}
+    cardTasks: {
+      task1: {
+        taskText: "",
+        taskDone: 'false'
+      }
+    }
   }
 };
 
