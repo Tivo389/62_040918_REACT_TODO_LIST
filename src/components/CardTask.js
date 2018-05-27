@@ -42,7 +42,7 @@ class CardTask extends React.Component {
   };
 
   deleteTask = () => {
-    const {cardDetails, taskIndex, cardIndex, updateState} = this.props;
+    const {cardDetails, taskIndex, cardIndex, updateState, deleteCard} = this.props;
     let updatedCard = {...cardDetails};
     // START / PRE-FIREBASE IMPLEMENTATION
     // updatedCard = update(updatedCard, {
@@ -54,7 +54,8 @@ class CardTask extends React.Component {
       cardTasks: { $merge: { [taskIndex]: null } }
     });
     // END / POST-FIREBASE IMPLEMENTATION
-    updateState(updatedCard, cardIndex);
+    const isLastTask = Object.keys(cardDetails.cardTasks).length === 1;
+    isLastTask ? deleteCard(cardIndex) : updateState(updatedCard, cardIndex);
   };
 
   render() {

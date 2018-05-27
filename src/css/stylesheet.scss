@@ -3,62 +3,14 @@
 @import '_variable';
 @import '_font';
 @import '_debugger';
+@import '_checkbox';
+@import '_deleteTaskBtn';
+@import '_addTaskBtn';
 @import '_colorPicker';
-
-$cardSpacer: 2.5rem;
-$cardPadding: 1.75rem;
-
-div[role="checkbox"] {
-  align-items: center;
-  border-radius: 0.35rem;
-  border: 1px solid $color--gray;
-  display: inline-flex;
-  flex: 0 0 1.6rem;
-  height: 1.6rem;
-  justify-content: center;
-  margin-right: 0.75rem;
-  &:hover {
-    border: 1px solid $color--darkgray;
-  }
-  + span {
-    width: 100%;
-    white-space: pre-wrap;
-  }
-}
-
-div[role="checkbox"].checked {
-  border: 1px solid $color--darkgray;
-  background-color: $color--darkgray;
-  &:after {
-    color: $color--white;
-    content: "\f00c";
-    display: inline-block;
-    font-family: "Font Awesome 5 Free";
-    font-size: 1.2rem;
-    font-weight: 900;
-    line-height: 1;
-  }
-  + span {
-    text-decoration: line-through;
-  }
-}
+@import '_card';
 
 header {
   margin-bottom: 2em;
-}
-
-li span[data-name="delete"] {
-  font-size: 1.8rem;
-  visibility: hidden;
-  margin-left: 1em;
-}
-
-li:hover span[data-name="delete"] {
-  visibility: visible;
-  opacity: 0.5;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 span[contenteditable="true"]:focus {
@@ -81,25 +33,6 @@ span[contenteditable="true"]:focus {
   &::after {
     transform: translateY(0.35em);
     bottom: 0;
-  }
-}
-
-span[data-name="addTaskBtn"] {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: $color--gray;
-  &:hover {
-    color: $color--darkgray;
-  }
-  span:first-child {
-    font-size: 2.4rem;
-    margin-right: 0.75rem;
-    margin-left: 0.1rem;
-    width: 1.6rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 
@@ -129,63 +62,6 @@ span[data-name="addTaskBtn"] {
   }
 }
 
-.cardWrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.cardContainer {
-  background-color: $color--white;
-  border-radius: 0.25rem;
-  box-shadow: $box-shadow--default;
-  flex: 1 0 22.5%;
-  min-width: 240px;
-  margin-right: $cardSpacer;
-  margin-bottom: $cardSpacer;
-  padding: $cardPadding;
-  &:only-child {
-    margin-right: 0;
-  }
-  h6 {
-    font-family: 'Roboto Condensed',arial,sans-serif;
-    text-transform: uppercase;
-    margin-bottom:0.75em;
-    letter-spacing: 0.05rem;
-    white-space: pre-wrap;
-    &:focus {
-      outline: 0;
-    }
-  }
-  li {
-    align-items: flex-start;
-    display: flex;
-    position: relative;
-    font-family: 'Roboto Slab', serif;
-    margin-bottom: 0.75em;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.cardToolBox {
-  border-top: 1px dashed lighten($color--gray, 10%);
-  color: $color--gray;
-  font-size: $font--p;
-  padding-top: 1em;
-  margin-top: 1em;
-  > * {
-    &:hover {
-      color: $color--darkgray;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
 .sampleBtnWrapper {
   display: flex;
   align-items: center;
@@ -195,11 +71,6 @@ span[data-name="addTaskBtn"] {
   }
 }
 
-/* BOOTSTRAP NOTES & RESOLUTION REFERENCE */
-// xs < 768px (.container @ auto)
-// sm >= 768px (.container @ 750px)
-// md >= 992px (.container @ 970px)
-// lg >= 1200px (.container @ 1170px)
 // ----------------------------------
 // iPhone SE = 320 * 568px
 // iPhone 7 = 375 * 667px
@@ -209,11 +80,6 @@ span[data-name="addTaskBtn"] {
 // Macbook Air 13-inch = 1440 * 900px
 // Macbook Pro 15-inch = 2560 * 1600px
 // ----------------------------------
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-/* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {}
-/* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199px) {}
-/* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {}
