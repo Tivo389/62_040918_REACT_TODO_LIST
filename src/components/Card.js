@@ -149,6 +149,7 @@ class Card extends React.Component {
               cardIndex={cardIndex}
               cardDetails={cardDetails}
               updateState={updateState}
+              deleteCard={deleteCard}
               handleKeyDown={this.handleKeyDown}
               handleInput={this.handleInput}
             />

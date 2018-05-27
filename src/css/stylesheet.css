@@ -207,6 +207,62 @@ a:visited, a:focus, a:active {
 .width--10 {
   width: 10%; }
 
+div[role="checkbox"] {
+  align-items: center;
+  border-radius: 0.35rem;
+  border: 1px solid #8C8C8C;
+  display: inline-flex;
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  justify-content: center;
+  margin-right: 0.75rem; }
+  div[role="checkbox"]:hover {
+    border: 1px solid #333333; }
+  div[role="checkbox"] + span {
+    width: 100%;
+    white-space: pre-wrap; }
+
+div[role="checkbox"].checked {
+  border: 1px solid #333333;
+  background-color: #333333; }
+  div[role="checkbox"].checked:after {
+    color: #FFFFFF;
+    content: "\f00c";
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.2rem;
+    font-weight: 900;
+    line-height: 1; }
+  div[role="checkbox"].checked + span {
+    text-decoration: line-through; }
+
+li span[data-name="delete"] {
+  font-size: 1.8rem;
+  visibility: hidden;
+  margin-left: 1em; }
+
+li:hover span[data-name="delete"] {
+  visibility: visible;
+  opacity: 0.5; }
+  li:hover span[data-name="delete"]:hover {
+    opacity: 1; }
+
+span[data-name="addTaskBtn"] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #8C8C8C; }
+  span[data-name="addTaskBtn"]:hover {
+    color: #333333; }
+  span[data-name="addTaskBtn"] span:first-child {
+    font-size: 2.4rem;
+    margin-right: 0.75rem;
+    margin-left: 0.1rem;
+    width: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; }
+
 .colorPicker {
   position: relative;
   padding: 0 10px 20px 0;
@@ -258,105 +314,6 @@ a:visited, a:focus, a:active {
 .color6 {
   background-color: #FAFAFA; }
 
-div[role="checkbox"] {
-  align-items: center;
-  border-radius: 0.35rem;
-  border: 1px solid #8C8C8C;
-  display: inline-flex;
-  flex: 0 0 1.6rem;
-  height: 1.6rem;
-  justify-content: center;
-  margin-right: 0.75rem; }
-  div[role="checkbox"]:hover {
-    border: 1px solid #333333; }
-  div[role="checkbox"] + span {
-    width: 100%;
-    white-space: pre-wrap; }
-
-div[role="checkbox"].checked {
-  border: 1px solid #333333;
-  background-color: #333333; }
-  div[role="checkbox"].checked:after {
-    color: #FFFFFF;
-    content: "\f00c";
-    display: inline-block;
-    font-family: "Font Awesome 5 Free";
-    font-size: 1.2rem;
-    font-weight: 900;
-    line-height: 1; }
-  div[role="checkbox"].checked + span {
-    text-decoration: line-through; }
-
-header {
-  margin-bottom: 2em; }
-
-li span[data-name="delete"] {
-  font-size: 1.8rem;
-  visibility: hidden;
-  margin-left: 1em; }
-
-li:hover span[data-name="delete"] {
-  visibility: visible;
-  opacity: 0.5; }
-  li:hover span[data-name="delete"]:hover {
-    opacity: 1; }
-
-span[contenteditable="true"]:focus {
-  outline: 0; }
-  span[contenteditable="true"]:focus::before, span[contenteditable="true"]:focus::after {
-    background-color: #8C8C8C;
-    content: '';
-    display: block;
-    height: 1px;
-    left: 0;
-    margin: -1px calc(-1.75rem);
-    opacity: 0.75;
-    position: absolute;
-    width: calc(100% + 1.75rem * 2); }
-  span[contenteditable="true"]:focus::before {
-    transform: translateY(-0.35em);
-    top: 0; }
-  span[contenteditable="true"]:focus::after {
-    transform: translateY(0.35em);
-    bottom: 0; }
-
-span[data-name="addTaskBtn"] {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: #8C8C8C; }
-  span[data-name="addTaskBtn"]:hover {
-    color: #333333; }
-  span[data-name="addTaskBtn"] span:first-child {
-    font-size: 2.4rem;
-    margin-right: 0.75rem;
-    margin-left: 0.1rem;
-    width: 1.6rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center; }
-
-.app {
-  padding: 3vw;
-  min-height: 100vh; }
-
-.btn {
-  font-size: 1.4rem;
-  color: #FFFFFF;
-  background-color: #5FC08E;
-  display: inline-block;
-  padding: 0.75em 1.5em;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
-  border-radius: 10rem; }
-  .btn:hover {
-    cursor: pointer;
-    background-color: #4db981; }
-  .btn:active {
-    transform: translateY(2px);
-    box-shadow: none; }
-  .btn .fas {
-    margin-right: 0.5em; }
-
 .cardWrapper {
   display: flex;
   align-items: flex-start;
@@ -402,16 +359,52 @@ span[data-name="addTaskBtn"] {
   .cardToolBox > *:last-child {
     margin-right: 0; }
 
+header {
+  margin-bottom: 2em; }
+
+span[contenteditable="true"]:focus {
+  outline: 0; }
+  span[contenteditable="true"]:focus::before, span[contenteditable="true"]:focus::after {
+    background-color: #8C8C8C;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    margin: -1px calc(-1.75rem);
+    opacity: 0.75;
+    position: absolute;
+    width: calc(100% + 1.75rem * 2); }
+  span[contenteditable="true"]:focus::before {
+    transform: translateY(-0.35em);
+    top: 0; }
+  span[contenteditable="true"]:focus::after {
+    transform: translateY(0.35em);
+    bottom: 0; }
+
+.app {
+  padding: 3vw;
+  min-height: 100vh; }
+
+.btn {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  background-color: #5FC08E;
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
+  border-radius: 10rem; }
+  .btn:hover {
+    cursor: pointer;
+    background-color: #4db981; }
+  .btn:active {
+    transform: translateY(2px);
+    box-shadow: none; }
+  .btn .fas {
+    margin-right: 0.5em; }
+
 .sampleBtnWrapper {
   display: flex;
   align-items: center;
   margin-bottom: 3rem; }
   .sampleBtnWrapper > div + div {
     margin-left: 1em; }
-
-/* BOOTSTRAP NOTES & RESOLUTION REFERENCE */
-/* Extra small devices (phones, less than 768px) */
-/* No media query since this is the default in Bootstrap */
-/* Small devices (tablets, 768px and up) */
-/* Medium devices (desktops, 992px and up) */
-/* Large devices (large desktops, 1200px and up) */

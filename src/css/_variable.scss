@@ -1,5 +1,9 @@
 $box-shadow--default: 0 2px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.12), 0 0 1px rgba(0,0,0,0.06);
 $box-shadow--hover: 0 6px 6px rgba(0,0,0,0.08), 0 6px 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.08);
+
+$cardSpacer: 2.5rem;
+$cardPadding: 1.75rem;
+
 $color--black: #000000;
 $color--darkgray: #333333;
 $color--lightgray: #cccccc;
@@ -9,6 +13,7 @@ $color--white: #FFFFFF;
 $color--main: #5FC08E;
 $color--sub: #EED786;
 $color--accent: #EE86A8;
+
 $font--body: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font--header: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font--p: 1.4rem;                     // BODY TEXT
@@ -18,12 +23,14 @@ $font--h3: calc(#{$font--p} * 1.83);  // PAGE SUB HEADER
 $font--h4: calc(#{$font--p} * 1.35);  // ARTICLE MAIN HEADER
 $font--h5: calc(#{$font--p} * 1.10);  // ARTICLE SUB HEADER
 $font--h6: calc(#{$font--p} * 1.10);  // ARTICLE SUB HEADER
+
 $space__mobile--s: 30px;
 $space__mobile--m: 60px;
 $space__mobile--l: 90px;
 $space__desktop--s: 20px;
 $space__desktop--m: 40px;
 $space__desktop--l: 60px;
+
 $transition--s: 0.3s;
 $transition--m: 0.6s;
 $transition--l: 1s;

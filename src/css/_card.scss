@@ -1,0 +1,56 @@
+.cardWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.cardContainer {
+  background-color: $color--white;
+  border-radius: 0.25rem;
+  box-shadow: $box-shadow--default;
+  flex: 1 0 22.5%;
+  min-width: 240px;
+  margin-right: $cardSpacer;
+  margin-bottom: $cardSpacer;
+  padding: $cardPadding;
+  &:only-child {
+    margin-right: 0;
+  }
+  h6 {
+    font-family: 'Roboto Condensed',arial,sans-serif;
+    text-transform: uppercase;
+    margin-bottom:0.75em;
+    letter-spacing: 0.05rem;
+    white-space: pre-wrap;
+    &:focus {
+      outline: 0;
+    }
+  }
+  li {
+    align-items: flex-start;
+    display: flex;
+    position: relative;
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 0.75em;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cardToolBox {
+  border-top: 1px dashed lighten($color--gray, 10%);
+  color: $color--gray;
+  font-size: $font--p;
+  padding-top: 1em;
+  margin-top: 1em;
+  > * {
+    &:hover {
+      color: $color--darkgray;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
