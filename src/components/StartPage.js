@@ -9,25 +9,27 @@ class StartPage extends React.Component {
 
   myInput = React.createRef();
 
-  goToNote = (e) => {
+  submitForm = (e) => {
     e.preventDefault();
-    this.startTakeNote(e);
+    const btnSubmit = document.querySelector("button[type='submit']");
+    const form = document.querySelector('.nodeID');
+    btnSubmit.classList.toggle('activated');
+    form.classList.toggle('activated');
+    // CONTINUE HERE
     // const nodeID = this.myInput.current.value;
     // this.props.history.push(`/note/${nodeID}`);
   };
 
-  startTakeNote = (e) => {
+  handleClick = (e) => {
+    e.preventDefault();
     const ect = e.currentTarget;
-    const btnSubmit = document.querySelector("button[type='submit']");
-    const faCheckSq = btnSubmit.querySelector('.fa-check-square');
-    // ect.classList.add('activated');
-    // btnSubmit.classList.add('activated');
-    faCheckSq.classList.toggle('activated');
+    ect.classList.toggle('activated');
   };
 
   render() {
     return(
-      <form action="" className="nodeID" onSubmit={this.goToNote}>
+      <div>
+      <form action="" className="nodeID" onClick={this.submitForm}>
         <input
           type="text"
           placeholder="Note ID Number"
@@ -42,6 +44,7 @@ class StartPage extends React.Component {
           Take Note
         </button>
       </form>
+      </div>
     )
   }
 }

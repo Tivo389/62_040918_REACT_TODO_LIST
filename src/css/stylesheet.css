@@ -229,22 +229,24 @@ button[type="submit"] {
   font-family: "Patua One", cursive;
   font-size: 4.4rem;
   justify-content: center;
-  padding: 0 0 0 0.1em; }
+  padding: 0 0 0 0.1em;
+  transition: all 0.3s ease-in-out; }
   button[type="submit"]:focus {
     outline: none; }
   button[type="submit"].activated {
     color: #F5F5F5; }
+    button[type="submit"].activated .fa-check-square {
+      opacity: 1;
+      transform: scale(1); }
   button[type="submit"] i {
     font-size: 0.6em;
     margin-right: 0.35em; }
 
 .fa-check-square {
+  color: #F5F5F5;
   opacity: 0;
   transform: scale(2);
-  transition: all 1s ease-in-out; }
-  .fa-check-square.activated {
-    opacity: 1;
-    transform: scale(1); }
+  transition: all 0.3s cubic-bezier(0.1, 0.1, 0.4, 1.5); }
 
 .nodeID {
   height: 100vh;
@@ -254,9 +256,27 @@ button[type="submit"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-duration: 0.3s; }
+  transition-duration: 0.3s;
+  position: relative;
+  overflow: hidden; }
+  .nodeID::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 5000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition-duration: 1s;
+    background-color: #FF8145;
+    z-index: -10; }
   .nodeID.activated {
-    background-color: #FFCC5F; }
+    background-color: initial; }
+    .nodeID.activated::after {
+      width: 300vh;
+      height: 300vh; }
 
 .cardWrapper {
   display: flex;
@@ -444,14 +464,14 @@ header {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
   color: #F5F5F5;
-  background-color: #FFCC5F;
+  background-color: #FF8145;
   display: inline-block;
   padding: 0.75em 1.5em;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
   border-radius: 10rem; }
   .btn:hover {
     cursor: pointer;
-    background-color: #ffc446; }
+    background-color: #ff702c; }
   .btn:active {
     transform: translateY(2px);
     box-shadow: none; }

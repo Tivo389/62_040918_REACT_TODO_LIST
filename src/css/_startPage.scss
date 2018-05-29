@@ -8,25 +8,28 @@ button[type="submit"] {
   font-size: 4.4rem;
   justify-content: center;
   padding: 0 0 0 0.1em;
+  transition: all $transitionS ease-in-out;
   &:focus {
     outline: none;
   }
   &.activated {
     color: $colorWhite;
+    .fa-check-square {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   i {
     font-size: 0.6em;
     margin-right: 0.35em;
   }
 }
+
 .fa-check-square {
+  color: $colorWhite;
   opacity: 0;
   transform: scale(2);
-  transition: all $transitionL ease-in-out;
-  &.activated {
-    opacity: 1;
-    transform: scale(1);
-  }
+  transition: all $transitionS cubic-bezier(0.1, 0.1, 0.4, 1.5);;
 }
 
 .nodeID {
@@ -38,7 +41,27 @@ button[type="submit"] {
   justify-content: center;
   align-items: center;
   transition-duration: $transitionS;
-  &.activated {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 5000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition-duration: $transitionL;
     background-color: $colorMain;
+    z-index: -10;
+  }
+  &.activated {
+    background-color: initial;
+    &::after {
+      width: 300vh;
+      height: 300vh;
+    }
   }
 }
