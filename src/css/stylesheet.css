@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,700");
+@import url("https://fonts.googleapis.com/css?family=Patua+One|Raleway:500|Roboto+Slab|Roboto:400,700");
 html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
   margin: 0;
@@ -6,14 +6,12 @@ html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym
   vertical-align: baseline; }
 
 html {
-  box-sizing: border-box;
-  font-size: 62.5%; }
+  box-sizing: border-box; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
 
 body {
-  font-family: "Helvetica", "Verdana", sans-serif;
   font-variant-ligatures: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -46,13 +44,28 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+html {
+  font-size: 62.5%; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  html {
+    font-size: 65.5%; } }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  html {
+    font-size: 68.5%; } }
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 71.5%; } }
+
 h1, h2, h3, h4, h5, h6, p, a, li {
   color: #000000;
   line-height: 125%;
   text-align: left; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Patua One", cursive; }
 
 h1 {
   font-size: calc(1.4rem * 3.32); }
@@ -75,7 +88,7 @@ h6 {
 
 p, a, li {
   font-size: 1.4rem;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 a:visited, a:focus, a:active {
   color: #000000;
@@ -207,6 +220,110 @@ a:visited, a:focus, a:active {
 .width--10 {
   width: 10%; }
 
+button[type="submit"] {
+  align-items: center;
+  background-color: initial;
+  border: 0;
+  color: #8C8C8C;
+  display: flex;
+  font-family: "Patua One", cursive;
+  font-size: 4.4rem;
+  justify-content: center;
+  padding: 0 0 0 0.1em; }
+  button[type="submit"]:focus {
+    outline: none; }
+  button[type="submit"].activated {
+    color: #F5F5F5; }
+  button[type="submit"] i {
+    font-size: 0.6em;
+    margin-right: 0.35em; }
+
+.fa-check-square {
+  opacity: 0;
+  transform: scale(2);
+  transition: all 1s ease-in-out; }
+  .fa-check-square.activated {
+    opacity: 1;
+    transform: scale(1); }
+
+.nodeID {
+  height: 100vh;
+  width: 100vw;
+  padding-bottom: 5vh;
+  background-color: #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.3s; }
+  .nodeID.activated {
+    background-color: #FFCC5F; }
+
+.cardWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap; }
+
+.cardContainer {
+  background-color: #F5F5F5;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
+  flex: 1 0 22.5%;
+  min-width: 240px;
+  margin-bottom: 2.5rem;
+  padding: 1.75rem; }
+  .cardContainer li {
+    align-items: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 0.75em; }
+    .cardContainer li:last-child {
+      margin-bottom: 0; }
+
+.cardToolBox {
+  border-top: 1px dashed #a6a6a6;
+  color: #8C8C8C;
+  font-size: 1.4rem;
+  padding-top: 1em;
+  margin-top: 1em; }
+  .cardToolBox > *:hover {
+    color: #333333; }
+  .cardToolBox > *:last-child {
+    margin-right: 0; }
+
+span[data-type="taskText"] {
+  line-height: 1.35;
+  font-size: 1.4rem; }
+  span[data-type="taskText"]:focus {
+    outline: 0; }
+    span[data-type="taskText"]:focus::before, span[data-type="taskText"]:focus::after {
+      background-color: #8C8C8C;
+      content: '';
+      display: block;
+      height: 1px;
+      left: 0;
+      margin: -1px calc(-1.75rem);
+      opacity: 0.75;
+      position: absolute;
+      width: calc(100% + 1.75rem * 2); }
+    span[data-type="taskText"]:focus::before {
+      transform: translateY(-0.35em);
+      top: 0; }
+    span[data-type="taskText"]:focus::after {
+      transform: translateY(0.35em);
+      bottom: 0; }
+
+.cardContainer h6 {
+  font-family: 'Roboto Condensed',arial,sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 0.75em;
+  letter-spacing: 0.05rem;
+  white-space: pre-wrap; }
+  .cardContainer h6:focus {
+    outline: 0; }
+
 div[role="checkbox"] {
   align-items: center;
   border-radius: 0.35rem;
@@ -215,7 +332,8 @@ div[role="checkbox"] {
   flex: 0 0 1.6rem;
   height: 1.6rem;
   justify-content: center;
-  margin-right: 0.75rem; }
+  margin-right: 0.75rem;
+  margin-top: calc(1.4rem / 12); }
   div[role="checkbox"]:hover {
     border: 1px solid #333333; }
   div[role="checkbox"] + span {
@@ -226,7 +344,7 @@ div[role="checkbox"].checked {
   border: 1px solid #333333;
   background-color: #333333; }
   div[role="checkbox"].checked:after {
-    color: #FFFFFF;
+    color: #F5F5F5;
     content: "\f00c";
     display: inline-block;
     font-family: "Font Awesome 5 Free";
@@ -236,18 +354,8 @@ div[role="checkbox"].checked {
   div[role="checkbox"].checked + span {
     text-decoration: line-through; }
 
-li span[data-name="delete"] {
-  font-size: 1.8rem;
-  visibility: hidden;
-  margin-left: 1em; }
-
-li:hover span[data-name="delete"] {
-  visibility: visible;
-  opacity: 0.5; }
-  li:hover span[data-name="delete"]:hover {
-    opacity: 1; }
-
 span[data-name="addTaskBtn"] {
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -263,6 +371,17 @@ span[data-name="addTaskBtn"] {
     align-items: center;
     justify-content: center; }
 
+li span[data-name="delete"] {
+  font-size: 1.8rem;
+  visibility: hidden;
+  margin-left: 1em; }
+
+li:hover span[data-name="delete"] {
+  visibility: visible;
+  opacity: 0.5; }
+  li:hover span[data-name="delete"]:hover {
+    opacity: 1; }
+
 .colorPicker {
   position: relative;
   padding: 0 10px 20px 0;
@@ -272,7 +391,7 @@ span[data-name="addTaskBtn"] {
 
 .colorPalette {
   visibility: hidden;
-  background-color: #FFFFFF;
+  background-color: #F5F5F5;
   border-radius: calc(30px / 6);
   top: 60%;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
@@ -314,93 +433,33 @@ span[data-name="addTaskBtn"] {
 .color6 {
   background-color: #FAFAFA; }
 
-.cardWrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap; }
-
-.cardContainer {
-  background-color: #FFFFFF;
-  border-radius: 0.25rem;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
-  flex: 1 0 22.5%;
-  min-width: 240px;
-  margin-right: 2.5rem;
-  margin-bottom: 2.5rem;
-  padding: 1.75rem; }
-  .cardContainer:only-child {
-    margin-right: 0; }
-  .cardContainer h6 {
-    font-family: 'Roboto Condensed',arial,sans-serif;
-    text-transform: uppercase;
-    margin-bottom: 0.75em;
-    letter-spacing: 0.05rem;
-    white-space: pre-wrap; }
-    .cardContainer h6:focus {
-      outline: 0; }
-  .cardContainer li {
-    align-items: flex-start;
-    display: flex;
-    position: relative;
-    font-family: 'Roboto Slab', serif;
-    margin-bottom: 0.75em; }
-    .cardContainer li:last-child {
-      margin-bottom: 0; }
-
-.cardToolBox {
-  border-top: 1px dashed #a6a6a6;
-  color: #8C8C8C;
-  font-size: 1.4rem;
-  padding-top: 1em;
-  margin-top: 1em; }
-  .cardToolBox > *:hover {
-    color: #333333; }
-  .cardToolBox > *:last-child {
-    margin-right: 0; }
-
 header {
   margin-bottom: 2em; }
 
-span[contenteditable="true"]:focus {
-  outline: 0; }
-  span[contenteditable="true"]:focus::before, span[contenteditable="true"]:focus::after {
-    background-color: #8C8C8C;
-    content: '';
-    display: block;
-    height: 1px;
-    left: 0;
-    margin: -1px calc(-1.75rem);
-    opacity: 0.75;
-    position: absolute;
-    width: calc(100% + 1.75rem * 2); }
-  span[contenteditable="true"]:focus::before {
-    transform: translateY(-0.35em);
-    top: 0; }
-  span[contenteditable="true"]:focus::after {
-    transform: translateY(0.35em);
-    bottom: 0; }
-
 .app {
-  padding: 3vw;
+  padding: 5vw;
   min-height: 100vh; }
 
 .btn {
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
-  color: #FFFFFF;
-  background-color: #5FC08E;
+  color: #F5F5F5;
+  background-color: #FFCC5F;
   display: inline-block;
   padding: 0.75em 1.5em;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
   border-radius: 10rem; }
   .btn:hover {
     cursor: pointer;
-    background-color: #4db981; }
+    background-color: #ffc446; }
   .btn:active {
     transform: translateY(2px);
     box-shadow: none; }
   .btn .fas {
     margin-right: 0.5em; }
+
+.hidden {
+  display: none !important; }
 
 .sampleBtnWrapper {
   display: flex;

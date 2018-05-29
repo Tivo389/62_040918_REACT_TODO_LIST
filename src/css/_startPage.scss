@@ -1,0 +1,44 @@
+button[type="submit"] {
+  align-items: center;
+  background-color: initial;
+  border: 0;
+  color: $colorGray;
+  display: flex;
+  font-family: $fontHeader;
+  font-size: 4.4rem;
+  justify-content: center;
+  padding: 0 0 0 0.1em;
+  &:focus {
+    outline: none;
+  }
+  &.activated {
+    color: $colorWhite;
+  }
+  i {
+    font-size: 0.6em;
+    margin-right: 0.35em;
+  }
+}
+.fa-check-square {
+  opacity: 0;
+  transform: scale(2);
+  transition: all $transitionL ease-in-out;
+  &.activated {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.nodeID {
+  height: 100vh;
+  width: 100vw;
+  padding-bottom: 5vh;
+  background-color: $colorLightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: $transitionS;
+  &.activated {
+    background-color: $colorMain;
+  }
+}

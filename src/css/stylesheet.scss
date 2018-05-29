@@ -1,57 +1,38 @@
 @charset 'utf-8';
+@import url('https://fonts.googleapis.com/css?family=Patua+One|Raleway:500|Roboto+Slab|Roboto:400,700');
+// font-family: 'Patua One', cursive;
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Roboto Slab', serif;
 @import '_reset';
 @import '_variable';
 @import '_font';
 @import '_debugger';
-@import '_checkbox';
-@import '_deleteTaskBtn';
-@import '_addTaskBtn';
-@import '_colorPicker';
+@import '_startPage';
 @import '_card';
+@import '_colorPicker';
 
 header {
   margin-bottom: 2em;
 }
 
-span[contenteditable="true"]:focus {
-  outline: 0;
-  &::before, &::after {
-    background-color: $color--gray;
-    content: '';
-    display: block;
-    height: 1px;
-    left: 0;
-    margin: -1px calc(#{$cardPadding * -1});
-    opacity: 0.75;
-    position: absolute;
-    width: calc(100% + #{$cardPadding} * 2);
-  }
-  &::before{
-    transform: translateY(-0.35em);
-    top: 0;
-  }
-  &::after {
-    transform: translateY(0.35em);
-    bottom: 0;
-  }
-}
-
 .app {
-  padding: 3vw;
+  padding: 5vw;
   min-height: 100vh;
 }
 
 .btn {
+  font-family: $fontBody;
   font-size: 1.4rem;
-  color: $color--white;
-  background-color: $color--main;
+  color: $colorWhite;
+  background-color: $colorMain;
   display: inline-block;
   padding: 0.75em 1.5em;
   box-shadow: $box-shadow--default;
   border-radius: 10rem;
   &:hover {
     cursor: pointer;
-    background-color: darken($color--main, 5%);
+    background-color: darken($colorMain, 5%);
   }
   &:active {
     transform: translateY(2px);
@@ -60,6 +41,10 @@ span[contenteditable="true"]:focus {
   .fas {
     margin-right: 0.5em;
   }
+}
+
+.hidden {
+  display: none !important;
 }
 
 .sampleBtnWrapper {

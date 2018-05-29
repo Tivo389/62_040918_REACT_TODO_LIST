@@ -7,13 +7,11 @@ html, body, div, span, applet, object, iframe, blockquote, pre, a, abbr, acronym
 }
 html {
 	box-sizing: border-box;
-	font-size: 62.5%;
 }
 *, *:before, *:after {
 	box-sizing: inherit;
 }
 body {
-	font-family: "Helvetica", "Verdana", sans-serif;
 	font-variant-ligatures: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

@@ -1,3 +1,4 @@
+// START / CARD LAYOUT
 .cardWrapper {
   display: flex;
   align-items: flex-start;
@@ -6,30 +7,21 @@
 }
 
 .cardContainer {
-  background-color: $color--white;
+  background-color: $colorWhite;
   border-radius: 0.25rem;
   box-shadow: $box-shadow--default;
   flex: 1 0 22.5%;
   min-width: 240px;
-  margin-right: $cardSpacer;
+  // margin-right: $cardSpacer;
   margin-bottom: $cardSpacer;
   padding: $cardPadding;
-  &:only-child {
-    margin-right: 0;
-  }
-  h6 {
-    font-family: 'Roboto Condensed',arial,sans-serif;
-    text-transform: uppercase;
-    margin-bottom:0.75em;
-    letter-spacing: 0.05rem;
-    white-space: pre-wrap;
-    &:focus {
-      outline: 0;
-    }
-  }
+  // &:only-child {
+    // margin-right: 0;
+  // }
   li {
     align-items: flex-start;
     display: flex;
+    justify-content: flex-start;
     position: relative;
     font-family: 'Roboto Slab', serif;
     margin-bottom: 0.75em;
@@ -40,17 +32,141 @@
 }
 
 .cardToolBox {
-  border-top: 1px dashed lighten($color--gray, 10%);
-  color: $color--gray;
+  border-top: 1px dashed lighten($colorGray, 10%);
+  color: $colorGray;
   font-size: $font--p;
   padding-top: 1em;
   margin-top: 1em;
   > * {
     &:hover {
-      color: $color--darkgray;
+      color: $colorDarkgray;
     }
     &:last-child {
       margin-right: 0;
     }
   }
 }
+// END / CARD LAYOUT
+
+
+
+// START / CARD TEXT
+span[data-type="taskText"]  {
+  line-height: 1.35;
+  font-size: $font--p;
+  &:focus {
+    outline: 0;
+    &::before, &::after {
+      background-color: $colorGray;
+      content: '';
+      display: block;
+      height: 1px;
+      left: 0;
+      margin: -1px calc(#{$cardPadding * -1});
+      opacity: 0.75;
+      position: absolute;
+      width: calc(100% + #{$cardPadding} * 2);
+    }
+    &::before{
+      transform: translateY(-0.35em);
+      top: 0;
+    }
+    &::after {
+      transform: translateY(0.35em);
+      bottom: 0;
+    }
+  }
+}
+.cardContainer h6 {
+  font-family: 'Roboto Condensed',arial,sans-serif;
+  text-transform: uppercase;
+  margin-bottom:0.75em;
+  letter-spacing: 0.05rem;
+  white-space: pre-wrap;
+  &:focus {
+    outline: 0;
+  }
+}
+// END / CARD TEXT
+
+
+
+// START / CHECKBOX
+div[role="checkbox"] {
+  align-items: center;
+  border-radius: 0.35rem;
+  border: 1px solid $colorGray;
+  display: inline-flex;
+  flex: 0 0 1.6rem;
+  height: 1.6rem;
+  justify-content: center;
+  margin-right: 0.75rem;
+  margin-top: calc(#{$font--p} / 12);
+  &:hover {
+    border: 1px solid $colorDarkgray;
+  }
+  + span {
+    width: 100%;
+    white-space: pre-wrap;
+  }
+}
+
+div[role="checkbox"].checked {
+  border: 1px solid $colorDarkgray;
+  background-color: $colorDarkgray;
+  &:after {
+    color: $colorWhite;
+    content: "\f00c";
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.2rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  + span {
+    text-decoration: line-through;
+  }
+}
+// END / CHECKBOX
+
+
+
+// START / ADD TASK BUTTON
+span[data-name="addTaskBtn"] {
+  font-size: $font--p;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: $colorGray;
+  &:hover {
+    color: $colorDarkgray;
+  }
+  span:first-child {
+    font-size: 2.4rem;
+    margin-right: 0.75rem;
+    margin-left: 0.1rem;
+    width: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+// END / ADD TASK BUTTON
+
+
+
+// START / DELETE TASK BUTTON
+li span[data-name="delete"] {
+  font-size: 1.8rem;
+  visibility: hidden;
+  margin-left: 1em;
+}
+
+li:hover span[data-name="delete"] {
+  visibility: visible;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+}
+// END / DELETE TASK BUTTON

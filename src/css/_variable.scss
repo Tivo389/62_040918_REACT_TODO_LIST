@@ -4,18 +4,18 @@ $box-shadow--hover: 0 6px 6px rgba(0,0,0,0.08), 0 6px 6px rgba(0,0,0,0.16), 0 0 
 $cardSpacer: 2.5rem;
 $cardPadding: 1.75rem;
 
-$color--black: #000000;
-$color--darkgray: #333333;
-$color--lightgray: #cccccc;
-$color--gray: #8C8C8C;
-$color--white--transparent: rgba(255,255,255,0.95);
-$color--white: #FFFFFF;
-$color--main: #5FC08E;
-$color--sub: #EED786;
-$color--accent: #EE86A8;
+$colorBlack: #000000;
+$colorDarkgray: #333333;
+$colorLightgray: #cccccc;
+$colorGray: #8C8C8C;
+$colorWhite--transparent: rgba(255,255,255,0.95);
+$colorWhite: #F5F5F5;
+$colorMain: #FFCC5F;
+$colorSub: #EED786;
+$colorAccent: #EE86A8;
 
-$font--body: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font--header: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontBody: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontHeader: 'Patua One', cursive;
 $font--p: 1.4rem;                     // BODY TEXT
 $font--h1: calc(#{$font--p} * 3.32);  // PAGE BANNER
 $font--h2: calc(#{$font--p} * 2.46);  // PAGE MAIN HEADER
@@ -31,6 +31,6 @@ $space__desktop--s: 20px;
 $space__desktop--m: 40px;
 $space__desktop--l: 60px;
 
-$transition--s: 0.3s;
-$transition--m: 0.6s;
-$transition--l: 1s;
+$transitionS: 0.3s;
+$transitionM: 0.6s;
+$transitionL: 1s;

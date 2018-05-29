@@ -1,14 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:400,700');
-// font-family: 'Roboto', sans-serif;
-// font-family: 'Roboto Slab', serif;
+html {
+  font-size: 62.5%;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  html {
+    font-size: 65.5%;
+  }
+}
+@media (min-width : 992px) and (max-width: 1199px) {
+  html {
+    font-size: 68.5%;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 71.5%;
+  }
+}
 
 h1, h2, h3, h4, h5, h6, p, a, li {
-  color: $color--black;
+  color: $colorBlack;
   line-height: 125%;
   text-align: left;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font--header;
+  font-family: $fontHeader;
 }
 h1 {
   font-size: $font--h1;
@@ -31,11 +46,11 @@ h6 {
 }
 p,a,li {
   font-size: $font--p;
-  font-family: $font--body;
+  font-family: $fontBody;
 }
 a {
   &:visited, &:focus, &:active {
-    color: $color--black;
+    color: $colorBlack;
     outline: none;
     text-decoration: none;
   }
