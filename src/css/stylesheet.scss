@@ -19,15 +19,23 @@ header {
 .app {
   padding: 5vw;
   min-height: 100vh;
+  position: relative;
 }
 
 .btn {
   font-family: $fontBody;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   color: $colorWhite;
   background-color: $colorMain;
-  display: inline-block;
-  padding: 0.75em 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  right: 5vw;
+  bottom: 5vw;
+  // padding: 0.75em 1.5em;
   box-shadow: $box-shadow--default;
   border-radius: 10rem;
   &:hover {

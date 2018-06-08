@@ -251,7 +251,7 @@ button[type="submit"] {
 .nodeID {
   height: 100vh;
   width: 100vw;
-  padding-bottom: 5vh;
+  padding-bottom: 2.5vh;
   background-color: #cccccc;
   display: flex;
   justify-content: center;
@@ -277,6 +277,10 @@ button[type="submit"] {
     .nodeID.activated::after {
       width: 300vh;
       height: 300vh; }
+
+@media (min-width: 1200px) {
+  .nodeID::after {
+    transition-duration: 0.3s; } }
 
 .cardWrapper {
   display: flex;
@@ -458,15 +462,22 @@ header {
 
 .app {
   padding: 5vw;
-  min-height: 100vh; }
+  min-height: 100vh;
+  position: relative; }
 
 .btn {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   color: #F5F5F5;
   background-color: #FF8145;
-  display: inline-block;
-  padding: 0.75em 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  right: 5vw;
+  bottom: 5vw;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
   border-radius: 10rem; }
   .btn:hover {

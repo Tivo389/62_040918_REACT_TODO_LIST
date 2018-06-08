@@ -35,7 +35,7 @@ button[type="submit"] {
 .nodeID {
   height: 100vh;
   width: 100vw;
-  padding-bottom: 5vh;
+  padding-bottom: 2.5vh;
   background-color: $colorLightgray;
   display: flex;
   justify-content: center;
@@ -63,5 +63,11 @@ button[type="submit"] {
       width: 300vh;
       height: 300vh;
     }
+  }
+}
+
+@media (min-width: 1200px) {
+  .nodeID::after {
+    transition-duration: $transitionS;
   }
 }

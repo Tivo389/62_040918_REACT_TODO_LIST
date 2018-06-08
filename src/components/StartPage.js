@@ -13,11 +13,17 @@ class StartPage extends React.Component {
     e.preventDefault();
     const btnSubmit = document.querySelector("button[type='submit']");
     const form = document.querySelector('.nodeID');
+    const history = this.props.history;
+    const nodeID = this.myInput.current.value;
+    form.addEventListener('transitionend', gotoNote);
     btnSubmit.classList.toggle('activated');
     form.classList.toggle('activated');
-    // CONTINUE HERE
-    // const nodeID = this.myInput.current.value;
-    // this.props.history.push(`/note/${nodeID}`);
+    function gotoNote(e) {
+      if(e.propertyName !== 'background-color') return;
+      setTimeout(() => {
+        history.push(`/note/${nodeID}`);
+      }, 1250);
+    }
   };
 
   handleClick = (e) => {
