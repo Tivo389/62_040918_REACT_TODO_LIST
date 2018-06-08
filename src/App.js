@@ -115,6 +115,27 @@ class App extends React.Component {
   }
 
   render() {
+    const cardsExist = Object.keys(this.state.taskCards).length > 0;
+    const mainContent = cardsExist ? (
+      <div className="cardWrapper">
+        {Object.keys(this.state.taskCards).map(key => (
+          <Card
+            key={key}
+            cardIndex={key}
+            cardDetails={this.state.taskCards[key]}
+            lastCard={this.state.lastCard}
+            lastProperty={this.state.lastProperty}
+            lastCaretPosition={this.state.lastCaretPosition}
+            updateState={this.updateState}
+            deleteCard={this.deleteCard}
+          />
+        ))}
+      </div>
+    ) : (
+      <div className="noCard">
+        <p>Lets make a note<i class="far fa-hand-point-right"></i></p>
+      </div>
+    );
     return (
       <div className="app">
         {/*<div className="sampleBtnWrapper">
@@ -127,21 +148,9 @@ class App extends React.Component {
             Add Note
           </div>
         </div>*/}
-        <div className="cardWrapper">
-          {Object.keys(this.state.taskCards).map(key => (
-            <Card
-              key={key}
-              cardIndex={key}
-              cardDetails={this.state.taskCards[key]}
-              lastCard={this.state.lastCard}
-              lastProperty={this.state.lastProperty}
-              lastCaretPosition={this.state.lastCaretPosition}
-              updateState={this.updateState}
-              deleteCard={this.deleteCard}
-            />
-          ))}
-        </div>
-        <div className="btn">
+        {mainContent}
+        {/*CONTINUE HERE MAKE A FUNCTION FOR BTN/TOUCH DOWN*/}
+        <div className="btn" onClick={this.addCard}>
           <i className="fas fa-plus"></i>
         </div>
       </div>

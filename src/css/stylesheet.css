@@ -492,6 +492,23 @@ header {
 .hidden {
   display: none !important; }
 
+.noCard {
+  right: calc(5vw + 46px * 1.25);
+  position: absolute;
+  bottom: 5vw;
+  transform: translate(0, -35%);
+  color: #8C8C8C; }
+  .noCard p {
+    color: inherit;
+    font-family: "Patua One", cursive;
+    line-height: 1;
+    text-align: center;
+    font-size: 2.4rem; }
+  .noCard svg {
+    height: 2.4rem;
+    width: 2.4rem;
+    margin-left: 0.25em; }
+
 .sampleBtnWrapper {
   display: flex;
   align-items: center;
