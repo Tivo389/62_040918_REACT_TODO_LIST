@@ -3,7 +3,6 @@ import update from 'immutability-helper';
 import { hot } from 'react-hot-loader'
 // import defaultCards from './defaultCards';
 import sampleCards from './sampleCards';
-import AppHeader from './components/AppHeader';
 import Card from './components/Card';
 import base from  './base';
 
@@ -118,8 +117,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <AppHeader text="React Notes"/>
-        <div className="sampleBtnWrapper">
+        {/*<div className="sampleBtnWrapper">
           <div className="btn" onClick={this.loadSamples}>
             <i className="fas fa-flask"></i>
             Load Samples
@@ -128,7 +126,7 @@ class App extends React.Component {
             <i className="fas fa-plus-square addNote"></i>
             Add Note
           </div>
-        </div>
+        </div>*/}
         <div className="cardWrapper">
           {Object.keys(this.state.taskCards).map(key => (
             <Card
@@ -142,6 +140,9 @@ class App extends React.Component {
               deleteCard={this.deleteCard}
             />
           ))}
+        </div>
+        <div className="btn">
+          <i className="fas fa-plus"></i>
         </div>
       </div>
     );

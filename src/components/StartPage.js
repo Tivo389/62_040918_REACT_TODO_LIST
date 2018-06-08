@@ -9,18 +9,48 @@ class StartPage extends React.Component {
 
   myInput = React.createRef();
 
-  goToNote = (e) => {
+  submitForm = (e) => {
     e.preventDefault();
+    const btnSubmit = document.querySelector("button[type='submit']");
+    const form = document.querySelector('.nodeID');
+    const history = this.props.history;
     const nodeID = this.myInput.current.value;
-    this.props.history.push(`/note/${nodeID}`);
+    form.addEventListener('transitionend', gotoNote);
+    btnSubmit.classList.toggle('activated');
+    form.classList.toggle('activated');
+    function gotoNote(e) {
+      if(e.propertyName !== 'background-color') return;
+      setTimeout(() => {
+        history.push(`/note/${nodeID}`);
+      }, 1250);
+    }
+  };
+
+  handleClick = (e) => {
+    e.preventDefault();
+    const ect = e.currentTarget;
+    ect.classList.toggle('activated');
   };
 
   render() {
     return(
-      <form action="" className="nodeID" onSubmit={this.goToNote}>
-        <input type="text" placeholder="Note ID Number" defaultValue={Date.now()} ref={this.myInput} required />
-        <button type="submit">Make A List</button>
+      <div>
+      <form action="" className="nodeID" onClick={this.submitForm}>
+        <input
+          type="text"
+          placeholder="Note ID Number"
+          defaultValue={Date.now()} ref={this.myInput}
+          className="hidden"
+          required />
+        <button type="submit">
+          <span className="fa-layers fa-fw">
+            <i className="far fa-square"></i>
+            <i className="far fa-check-square"></i>
+          </span>
+          Take Note
+        </button>
       </form>
+      </div>
     )
   }
 }

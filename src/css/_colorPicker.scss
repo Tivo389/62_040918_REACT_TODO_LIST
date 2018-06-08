@@ -11,7 +11,7 @@ $colorUnit: 30px;
 
 .colorPalette {
   visibility: hidden;
-  background-color: $color--white;
+  background-color: $colorWhite;
   border-radius: calc(#{$colorUnit} / 6);
   top: 60%;
   box-shadow: $box-shadow--default;
@@ -34,7 +34,7 @@ $colorUnit: 30px;
   height: $colorUnit;
   border-radius: $colorUnit;
   &:hover {
-    border: 2px solid $color--gray;
+    border: 2px solid $colorGray;
   }
   + [class*=colorSwatch] {
     margin-left: calc(#{$colorUnit} / 8);
