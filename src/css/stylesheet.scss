@@ -52,12 +52,12 @@ header {
 }
 
 .btnMain {
-  font-size: 2.4rem;
-  width: 46px;
-  height: 46px;
-  position: absolute;
-  right: 5vw;
   bottom: 5vw;
+  font-size: 2.4rem;
+  height: 46px;
+  position: fixed;
+  right: 5vw;
+  width: 46px;
 }
 
 .hidden {
