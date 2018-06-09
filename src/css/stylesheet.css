@@ -47,18 +47,6 @@ table {
 html {
   font-size: 62.5%; }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  html {
-    font-size: 65.5%; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  html {
-    font-size: 68.5%; } }
-
-@media (min-width: 1200px) {
-  html {
-    font-size: 71.5%; } }
-
 h1, h2, h3, h4, h5, h6, p, a, li {
   color: #000000;
   line-height: 125%;
@@ -68,26 +56,26 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Patua One", cursive; }
 
 h1 {
-  font-size: calc(1.4rem * 3.32); }
+  font-size: calc(1.6rem * 3.32); }
 
 h2 {
-  font-size: calc(1.4rem * 2.46); }
+  font-size: calc(1.6rem * 2.46); }
 
 h3 {
-  font-size: calc(1.4rem * 1.83); }
+  font-size: calc(1.6rem * 1.83); }
 
 h4 {
-  font-size: calc(1.4rem * 1.35); }
+  font-size: calc(1.6rem * 1.35); }
 
 h5 {
-  font-size: calc(1.4rem * 1.10);
+  font-size: calc(1.6rem * 1.10);
   font-weight: bolder; }
 
 h6 {
-  font-size: calc(1.4rem * 1.10); }
+  font-size: calc(1.6rem * 1.10); }
 
 p, a, li {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 a:visited, a:focus, a:active {
@@ -296,8 +284,6 @@ button[type="submit"] {
   min-width: 240px;
   margin-bottom: 2.5rem;
   padding: 1.75rem; }
-  .cardContainer:last-child {
-    margin-bottom: 7.5rem; }
   .cardContainer li {
     align-items: flex-start;
     display: flex;
@@ -311,7 +297,7 @@ button[type="submit"] {
 .cardToolBox {
   border-top: 1px dashed #a6a6a6;
   color: #8C8C8C;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding-top: 1em;
   margin-top: 1em; }
   .cardToolBox > *:hover {
@@ -321,7 +307,7 @@ button[type="submit"] {
 
 span[data-type="taskText"] {
   line-height: 1.35;
-  font-size: 1.4rem; }
+  font-size: 1.6rem; }
   span[data-type="taskText"]:focus {
     outline: 0; }
     span[data-type="taskText"]:focus::before, span[data-type="taskText"]:focus::after {
@@ -359,7 +345,7 @@ div[role="checkbox"] {
   height: 1.6rem;
   justify-content: center;
   margin-right: 0.75rem;
-  margin-top: calc(1.4rem / 12); }
+  margin-top: calc(1.6rem / 12); }
   div[role="checkbox"]:hover {
     border: 1px solid #333333; }
   div[role="checkbox"] + span {
@@ -381,7 +367,7 @@ div[role="checkbox"].checked {
     text-decoration: line-through; }
 
 span[data-name="addTaskBtn"] {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -494,12 +480,12 @@ header {
     margin-right: 0.5em; }
 
 .btnMain {
+  bottom: 5vw;
   font-size: 2.4rem;
-  width: 46px;
   height: 46px;
-  position: absolute;
+  position: fixed;
   right: 5vw;
-  bottom: 5vw; }
+  width: 46px; }
 
 .hidden {
   display: none !important; }

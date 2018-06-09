@@ -132,6 +132,7 @@ class Card extends React.Component {
 
   render() {
     const {cardIndex, cardDetails, deleteCard, updateState} = this.props;
+    if(cardDetails === null) { return null }
     const divStyle = { backgroundColor: cardDetails.cardColor };
     return (
       <div className="cardContainer" data-name={cardIndex} style={divStyle}>
