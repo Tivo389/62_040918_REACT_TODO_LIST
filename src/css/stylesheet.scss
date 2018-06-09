@@ -12,6 +12,12 @@
 @import '_card';
 @import '_colorPicker';
 
+@keyframes sway {
+  0% {transform: translate(0, -35%);}
+  50% {transform: translate(-8px, -35%);}
+  100% {transform: translate(0, -35%);}
+}
+
 header {
   margin-bottom: 2em;
 }
@@ -24,17 +30,11 @@ header {
 
 .btn {
   font-family: $fontBody;
-  font-size: 2.4rem;
   color: $colorWhite;
   background-color: $colorMain;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 46px;
-  height: 46px;
-  position: absolute;
-  right: 5vw;
-  bottom: 5vw;
   // padding: 0.75em 1.5em;
   box-shadow: $box-shadow--default;
   border-radius: 10rem;
@@ -51,16 +51,25 @@ header {
   }
 }
 
+.btnMain {
+  font-size: 2.4rem;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  right: 5vw;
+  bottom: 5vw;
+}
+
 .hidden {
   display: none !important;
 }
 
 .noCard {
-  right: calc(5vw + 46px * 1.25);
-  position: absolute;
+  animation: 2s ease-in-out sway infinite;
   bottom: 5vw;
-  transform: translate(0, -35%);
   color: $colorGray;
+  position: absolute;
+  right: calc(5vw + 46px * 1.25);
   p {
     color: inherit;
     font-family: $fontHeader;

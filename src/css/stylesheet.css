@@ -227,7 +227,7 @@ button[type="submit"] {
   color: #8C8C8C;
   display: flex;
   font-family: "Patua One", cursive;
-  font-size: 4.4rem;
+  font-size: 3.8rem;
   justify-content: center;
   padding: 0 0 0 0.1em;
   transition: all 0.3s ease-in-out; }
@@ -296,6 +296,8 @@ button[type="submit"] {
   min-width: 240px;
   margin-bottom: 2.5rem;
   padding: 1.75rem; }
+  .cardContainer:last-child {
+    margin-bottom: 7.5rem; }
   .cardContainer li {
     align-items: flex-start;
     display: flex;
@@ -457,6 +459,14 @@ li:hover span[data-name="delete"] {
 .color6 {
   background-color: #FAFAFA; }
 
+@keyframes sway {
+  0% {
+    transform: translate(0, -35%); }
+  50% {
+    transform: translate(-8px, -35%); }
+  100% {
+    transform: translate(0, -35%); } }
+
 header {
   margin-bottom: 2em; }
 
@@ -467,17 +477,11 @@ header {
 
 .btn {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 2.4rem;
   color: #F5F5F5;
   background-color: #FF8145;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 46px;
-  height: 46px;
-  position: absolute;
-  right: 5vw;
-  bottom: 5vw;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.06);
   border-radius: 10rem; }
   .btn:hover {
@@ -489,15 +493,23 @@ header {
   .btn .fas {
     margin-right: 0.5em; }
 
+.btnMain {
+  font-size: 2.4rem;
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  right: 5vw;
+  bottom: 5vw; }
+
 .hidden {
   display: none !important; }
 
 .noCard {
-  right: calc(5vw + 46px * 1.25);
-  position: absolute;
+  animation: 2s ease-in-out sway infinite;
   bottom: 5vw;
-  transform: translate(0, -35%);
-  color: #8C8C8C; }
+  color: #8C8C8C;
+  position: absolute;
+  right: calc(5vw + 46px * 1.25); }
   .noCard p {
     color: inherit;
     font-family: "Patua One", cursive;
