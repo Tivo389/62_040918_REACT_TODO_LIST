@@ -15,6 +15,7 @@ class App extends React.Component {
     lastCaretPosition: 0
   };
 
+  // LOAD SAMPLES CARDS
   loadSamples = () => {
     this.setState({
       taskCards: sampleCards,
@@ -34,6 +35,7 @@ class App extends React.Component {
   //   });
   // };
 
+  // UPDATES THE STATE
   updateState = (updatedCard, cardIndex='', property='', caretPosition=0) => {
     const taskCards = {...this.state.taskCards}
     taskCards[cardIndex] = updatedCard;
@@ -45,6 +47,7 @@ class App extends React.Component {
     });
   };
 
+  // DELETES THE CARD
   deleteCard = (cardIndex) => {
     const taskCards = {...this.state.taskCards};
     // START / PRE-FIREBASE IMPLEMENTATION
@@ -58,6 +61,7 @@ class App extends React.Component {
     });
   };
 
+  // ADDS A CARD
   addCard = () => {
     const newCard = `card${Date.now()}`;
     const colors = ['#F9F9A2','#CCEFFF','#FFBFCE','#D7FFBF','#EDBFFF','#FAFAFA'];
@@ -82,7 +86,43 @@ class App extends React.Component {
     this.setState({
       taskCards: taskCards
     });
-  }
+  };
+
+  // MAIN BTN MOUSE DOWN / NOT CLICK SINCE IT WILL COUNT THE DOWN FOR ADDITIONAL FUNCTIONS
+  btnMainMouseDown = (e) => {
+    const startTime = Date.now();
+    e.currentTarget.setAttribute('data-startTime', startTime);
+  };
+
+  // MAIN BTN MOUSE UP / NOT CLICK SINCE IT WILL COUNT THE DOWN FOR ADDITIONAL FUNCTIONS
+  btnMainMouseUp = (e) => {
+    const startTime = Number(e.currentTarget.dataset.starttime);
+    const endTime = Math.round(((Date.now() - startTime) / 1000) * 10) / 10;
+    if(endTime > 1) {
+      this.loadSamples();
+    } else {
+      this.addCard();
+    }
+  };
+
+  // MAIN BTN TOUCH START
+  btnMainTouchStart = (e) => {
+    e.preventDefault();
+    const startTime = Date.now();
+    e.currentTarget.setAttribute('data-startTime', startTime);
+  };
+
+  // MAIN BTN TOUCH END
+  btnMainTouchEnd = (e) => {
+    e.preventDefault();
+    const startTime = Number(e.currentTarget.dataset.starttime);
+    const endTime = Math.round(((Date.now() - startTime) / 1000) * 10) / 10;
+    if(endTime > 1) {
+      this.loadSamples();
+    } else {
+      this.addCard();
+    }
+  };
 
   // RUNS DURING ONLY THE FIRST RENDER && AFTER COMPONENT IS RENDERED
   componentDidMount() {
@@ -133,24 +173,19 @@ class App extends React.Component {
       </div>
     ) : (
       <div className="noCard">
-        <p>Lets make a note<i class="far fa-hand-point-right"></i></p>
+        <p>Lets make a note<i className="far fa-hand-point-right"></i></p>
       </div>
     );
     return (
       <div className="app">
-        {/*<div className="sampleBtnWrapper">
-          <div className="btn" onClick={this.loadSamples}>
-            <i className="fas fa-flask"></i>
-            Load Samples
-          </div>
-          <div className="btn" onClick={this.addCard}>
-            <i className="fas fa-plus-square addNote"></i>
-            Add Note
-          </div>
-        </div>*/}
         {mainContent}
-        {/*CONTINUE HERE MAKE A FUNCTION FOR BTN/TOUCH DOWN*/}
-        <div className="btn" onClick={this.addCard}>
+        <div
+          className="btn btnMain"
+          onMouseDown={this.btnMainMouseDown}
+          onMouseUp={this.btnMainMouseUp}
+          onTouchStart={this.btnMainTouchStart}
+          onTouchEnd={this.btnMainTouchEnd}
+        >
           <i className="fas fa-plus"></i>
         </div>
       </div>
