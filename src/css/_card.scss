@@ -10,8 +10,8 @@
   background-color: $colorWhite;
   border-radius: 0.25rem;
   box-shadow: $box-shadow--default;
-  flex: 1 0 22.5%;
-  min-width: 240px;
+  flex: 1 0 100%;
+  // min-width: 240px;
   // margin-right: $cardSpacer;
   margin-bottom: $cardSpacer;
   padding: $cardPadding;
@@ -170,3 +170,24 @@ li:hover span[data-name="delete"] {
   }
 }
 // END / DELETE TASK BUTTON
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cardContainer {
+    max-width: calc(50% - #{$cardSpacer} / 2);
+    flex: 1 0 calc(50% - #{$cardSpacer} / 2);
+    + .cardContainer:nth-child(even) {
+      margin-left: $cardSpacer;
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .cardContainer {
+    max-width: calc(33.333333% - #{$cardSpacer} / 1.5);
+    flex: 1 0 calc(33.333333% - #{$cardSpacer} / 1.5);
+    + .cardContainer:nth-child(3n-1), + .cardContainer:nth-child(3n) {
+      margin-left: $cardSpacer;
+    }
+  }
+}

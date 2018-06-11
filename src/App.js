@@ -95,33 +95,22 @@ class App extends React.Component {
   };
 
   // MAIN BTN MOUSE UP / NOT CLICK SINCE IT WILL COUNT THE DOWN FOR ADDITIONAL FUNCTIONS
-  btnMainMouseUp = (e) => {
+  btnMainMouseUp = (e, duration = 1) => {
     const startTime = Number(e.currentTarget.dataset.starttime);
     const endTime = Math.round(((Date.now() - startTime) / 1000) * 10) / 10;
-    if(endTime > 1) {
-      this.loadSamples();
-    } else {
-      this.addCard();
-    }
+    endTime > duration ? this.loadSamples() : this.addCard();
   };
 
   // MAIN BTN TOUCH START
   btnMainTouchStart = (e) => {
     e.preventDefault();
-    const startTime = Date.now();
-    e.currentTarget.setAttribute('data-startTime', startTime);
+    this.btnMainMouseDown(e);
   };
 
   // MAIN BTN TOUCH END
   btnMainTouchEnd = (e) => {
     e.preventDefault();
-    const startTime = Number(e.currentTarget.dataset.starttime);
-    const endTime = Math.round(((Date.now() - startTime) / 1000) * 10) / 10;
-    if(endTime > 1) {
-      this.loadSamples();
-    } else {
-      this.addCard();
-    }
+    this.btnMainMouseUp(e, 0.25);
   };
 
   // RUNS DURING ONLY THE FIRST RENDER && AFTER COMPONENT IS RENDERED
