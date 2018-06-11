@@ -102,6 +102,22 @@ header {
 // Macbook Air 13-inch = 1440 * 900px
 // Macbook Pro 15-inch = 2560 * 1600px
 // ----------------------------------
-@media (min-width: 768px) and (max-width: 991px) {}
-@media (min-width: 992px) and (max-width: 1199px) {}
-@media (min-width: 1200px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .app {
+    padding: 2.5vw;
+  }
+}
+
+@media (min-width: 1025px) {
+  .app {
+    padding: 2.5vw;
+  }
+  .btnMain {
+    bottom: 2.5vw;
+    right: 2.5vw;
+  }
+  .noCard {
+    bottom: 2.5vw;
+    right: calc(2.5vw + 46px * 1.25);
+  }
+}
