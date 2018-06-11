@@ -63,7 +63,8 @@ class App extends React.Component {
 
   // ADDS A CARD
   addCard = () => {
-    const newCard = `card${Date.now()}`;
+    const taskCardsLength = Object.keys(this.state.taskCards).length;
+    const newCard = `card${taskCardsLength}${Date.now()}`;
     const colors = ['#F9F9A2','#CCEFFF','#FFBFCE','#D7FFBF','#EDBFFF','#FAFAFA'];
     const randomColor = () => {
       return colors[Math.floor(Math.random() * colors.length)];
@@ -95,10 +96,10 @@ class App extends React.Component {
   };
 
   // MAIN BTN MOUSE UP / NOT CLICK SINCE IT WILL COUNT THE DOWN FOR ADDITIONAL FUNCTIONS
-  btnMainMouseUp = (e, duration = 1) => {
+  btnMainMouseUp = (e) => {
     const startTime = Number(e.currentTarget.dataset.starttime);
     const endTime = Math.round(((Date.now() - startTime) / 1000) * 10) / 10;
-    endTime > duration ? this.loadSamples() : this.addCard();
+    endTime > 0.25 ? this.loadSamples() : this.addCard();
   };
 
   // MAIN BTN TOUCH START
@@ -110,32 +111,20 @@ class App extends React.Component {
   // MAIN BTN TOUCH END
   btnMainTouchEnd = (e) => {
     e.preventDefault();
-    this.btnMainMouseUp(e, 0.25);
+    this.btnMainMouseUp(e);
   };
 
   // RUNS DURING ONLY THE FIRST RENDER && AFTER COMPONENT IS RENDERED
   componentDidMount() {
     const { params } = this.props.match;
-    const localStorageRef = localStorage.getItem(params.noteID);
-    // After initial-render check if there is data in the localStorage.
-    if(localStorageRef) {
-      this.setState({
-        taskCards: JSON.parse(localStorageRef)
-      });
-    } else {
-      this.ref = base.syncState(`${params.noteID}`, {
-        context: this,
-        state: 'taskCards'
-      });
-    }
+    this.ref = base.syncState(`${params.noteID}`, {
+      context: this,
+      state: 'taskCards'
+    });
   }
 
   // RUNS AFTER COMPONENT IS RENDERED
   componentDidUpdate() {
-    localStorage.setItem(
-      this.props.match.params.noteID,
-      JSON.stringify(this.state.taskCards)
-    );
   }
 
   // RUNS WHEN COMPONENT IS REMOVED FROM DOM
@@ -162,7 +151,7 @@ class App extends React.Component {
       </div>
     ) : (
       <div className="noCard">
-        <p>Lets make a note<i className="far fa-hand-point-right"></i></p>
+        <p>Lets take a note<i className="far fa-hand-point-right"></i></p>
       </div>
     );
     return (
