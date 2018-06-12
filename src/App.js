@@ -151,7 +151,8 @@ class App extends React.Component {
       </div>
     ) : (
       <div className="noCard">
-        <p>Lets take a note<i className="far fa-hand-point-right"></i></p>
+        <p>Lets take note<i className="far fa-hand-point-right"></i></p>
+        <p className="subText">(force touch to load samples)</p>
       </div>
     );
     return (
