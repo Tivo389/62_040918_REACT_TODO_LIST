@@ -1,6 +1,6 @@
 # 62_040918_REACT_TODO_LIST
 A todo list made in React.
-Accessible on [Heroku](https://react-todo-note.herokuapp.com/)
+Accessible on [Heroku](https://react-todo-note-p.herokuapp.com/)
 
 ## Notes
 - Used contenteditable for the note header and paragraph.
