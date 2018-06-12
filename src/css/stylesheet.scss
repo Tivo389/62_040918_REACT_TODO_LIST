@@ -66,7 +66,7 @@ header {
 
 .noCard {
   animation: 2s ease-in-out sway infinite;
-  bottom: 5vw;
+  bottom: calc(5vw - 20px);
   color: $colorGray;
   position: absolute;
   right: calc(5vw + 46px * 1.25);
@@ -74,8 +74,15 @@ header {
     color: inherit;
     font-family: $fontHeader;
     line-height: 1;
-    text-align: center;
+    text-align: left;
     font-size: 2.4rem;
+    margin-bottom: 0.1em;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    &.subText {
+      font-size: 1.4rem;
+    }
   }
   svg {
     height: 2.4rem;
@@ -117,7 +124,10 @@ header {
     right: 2.5vw;
   }
   .noCard {
-    bottom: 2.5vw;
+    bottom: calc(2.5vw - 22px);
     right: calc(2.5vw + 46px * 1.25);
+    p {
+      margin-bottom: 0.25em;
+    }
   }
 }
